@@ -28,5 +28,10 @@ namespace Shop_dotNet.Controllers
 
             return View();
         }
+
+        public ActionResult test()
+        {
+            return View();
+        }
     }
 }
