@@ -31,6 +31,5 @@ namespace Shop_dotNet.Models
         public virtual category category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<detail_orders> detail_orders { get; set; }
-        public virtual manufacturer manufacturer { get; set; }
     }
 }

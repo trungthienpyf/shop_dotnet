@@ -16,7 +16,8 @@ namespace Shop_dotNet
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                new[] {"Shop_dotNet.Controllers"}
             );
         }
     }
