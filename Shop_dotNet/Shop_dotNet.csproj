@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -46,10 +47,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -128,6 +129,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\CategoriesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\PageController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -136,41 +141,101 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\category.cs">
-      <DependentUpon>ShopModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\customer.cs">
-      <DependentUpon>ShopModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\detail_orders.cs">
-      <DependentUpon>ShopModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\manufacturer.cs">
-      <DependentUpon>ShopModel.tt</DependentUpon>
+    <Compile Include="Models\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\order.cs">
-      <DependentUpon>ShopModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\product.cs">
-      <DependentUpon>ShopModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ShopModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ShopModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ShopModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ShopModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ShopModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ShopModel.edmx</DependentUpon>
-    </Compile>
+    <Compile Include="Models\UsersRoleProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Admin\Assets\bundles\apexcharts.bundle.js" />
+    <Content Include="Areas\Admin\Assets\bundles\c3.bundle.js" />
+    <Content Include="Areas\Admin\Assets\bundles\counterup.bundle.js" />
+    <Content Include="Areas\Admin\Assets\bundles\fullcalendar.bundle.js" />
+    <Content Include="Areas\Admin\Assets\bundles\knobjs.bundle.js" />
+    <Content Include="Areas\Admin\Assets\bundles\lib.vendor.bundle.js" />
+    <Content Include="Areas\Admin\Assets\bundles\nestable.bundle.js" />
+    <Content Include="Areas\Admin\Assets\bundles\summernote.bundle.js" />
+    <Content Include="Areas\Admin\Assets\bundles\sweetalert.bundle.js" />
+    <Content Include="Areas\Admin\Assets\css\main.css" />
+    <Content Include="Areas\Admin\Assets\css\theme1.css" />
+    <Content Include="Areas\Admin\Assets\images\gallery\1.jpg" />
+    <Content Include="Areas\Admin\Assets\images\gallery\10.jpg" />
+    <Content Include="Areas\Admin\Assets\images\gallery\11.jpg" />
+    <Content Include="Areas\Admin\Assets\images\gallery\12.jpg" />
+    <Content Include="Areas\Admin\Assets\images\gallery\2.jpg" />
+    <Content Include="Areas\Admin\Assets\images\gallery\3.jpg" />
+    <Content Include="Areas\Admin\Assets\images\gallery\4.jpg" />
+    <Content Include="Areas\Admin\Assets\images\gallery\5.jpg" />
+    <Content Include="Areas\Admin\Assets\images\gallery\6.jpg" />
+    <Content Include="Areas\Admin\Assets\images\gallery\7.jpg" />
+    <Content Include="Areas\Admin\Assets\images\gallery\8.jpg" />
+    <Content Include="Areas\Admin\Assets\images\gallery\9.jpg" />
+    <Content Include="Areas\Admin\Assets\images\login.png" />
+    <Content Include="Areas\Admin\Assets\images\search.svg" />
+    <Content Include="Areas\Admin\Assets\images\sm\avatar1.jpg" />
+    <Content Include="Areas\Admin\Assets\images\sm\avatar2.jpg" />
+    <Content Include="Areas\Admin\Assets\images\sm\avatar3.jpg" />
+    <Content Include="Areas\Admin\Assets\images\sm\avatar4.jpg" />
+    <Content Include="Areas\Admin\Assets\images\sm\avatar5.jpg" />
+    <Content Include="Areas\Admin\Assets\images\sm\avatar6.jpg" />
+    <Content Include="Areas\Admin\Assets\images\themes\dark.png" />
+    <Content Include="Areas\Admin\Assets\images\themes\default.png" />
+    <Content Include="Areas\Admin\Assets\images\themes\rtl.png" />
+    <Content Include="Areas\Admin\Assets\images\user.png" />
+    <Content Include="Areas\Admin\Assets\images\xs\avatar1.jpg" />
+    <Content Include="Areas\Admin\Assets\images\xs\avatar2.jpg" />
+    <Content Include="Areas\Admin\Assets\images\xs\avatar3.jpg" />
+    <Content Include="Areas\Admin\Assets\images\xs\avatar4.jpg" />
+    <Content Include="Areas\Admin\Assets\images\xs\avatar5.jpg" />
+    <Content Include="Areas\Admin\Assets\images\xs\avatar6.jpg" />
+    <Content Include="Areas\Admin\Assets\images\xs\avatar7.jpg" />
+    <Content Include="Areas\Admin\Assets\images\xs\avatar8.jpg" />
+    <Content Include="Areas\Admin\Assets\images\xs\avatar9.jpg" />
+    <Content Include="Areas\Admin\Assets\js\chart\knobjs.js" />
+    <Content Include="Areas\Admin\Assets\js\core.js" />
+    <Content Include="Areas\Admin\Assets\js\form\dropify.js" />
+    <Content Include="Areas\Admin\Assets\js\page\calendar.js" />
+    <Content Include="Areas\Admin\Assets\js\page\project-index.js" />
+    <Content Include="Areas\Admin\Assets\js\page\sortable-nestable.js" />
+    <Content Include="Areas\Admin\Assets\js\page\summernote.js" />
+    <Content Include="Areas\Admin\Assets\js\page\sweetalert.js" />
+    <Content Include="Areas\Admin\Assets\plugins\bootstrap-datepicker\css\bootstrap-datepicker3.min.css" />
+    <Content Include="Areas\Admin\Assets\plugins\bootstrap-datepicker\js\bootstrap-datepicker.min.js" />
+    <Content Include="Areas\Admin\Assets\plugins\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Areas\Admin\Assets\plugins\charts-c3\c3.min.css" />
+    <Content Include="Areas\Admin\Assets\plugins\dropify\css\dropify.min.css" />
+    <Content Include="Areas\Admin\Assets\plugins\dropify\js\dropify.min.js" />
+    <Content Include="Areas\Admin\Assets\plugins\fullcalendar\fullcalendar.min.css" />
+    <Content Include="Areas\Admin\Assets\plugins\nestable\jquery-nestable.css" />
+    <Content Include="Areas\Admin\Assets\plugins\summernote\dist\summernote.css" />
+    <Content Include="Areas\Admin\Assets\plugins\sweetalert\sweetalert.css" />
     <Content Include="Content\AssetsClient\css\bootstrap.min.css" />
     <Content Include="Content\AssetsClient\css\plugins.css" />
     <Content Include="Content\AssetsClient\css\responsive.css" />
@@ -673,25 +738,18 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\ShopModel.Context.tt">
+    <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ShopModel.Context.cs</LastGenOutput>
-      <DependentUpon>ShopModel.edmx</DependentUpon>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\ShopModel.tt">
+    <Content Include="Models\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ShopModel.edmx</DependentUpon>
-      <LastGenOutput>ShopModel.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\ShopModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ShopModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\ShopModel.edmx.diagram">
-      <DependentUpon>ShopModel.edmx</DependentUpon>
-    </Content>
     <Content Include="Content\AssetsClient\fonts\annimex-icons0f29.eot" />
     <Content Include="Content\AssetsClient\fonts\annimex-icons0f29.ttf" />
     <Content Include="Content\AssetsClient\fonts\annimex-icons0f29.woff" />
@@ -704,6 +762,33 @@
     <Content Include="Content\AssetsClient\fonts\themify9f24.ttf" />
     <Content Include="Content\AssetsClient\fonts\themify9f24.woff" />
     <Content Include="Content\AssetsClient\fonts\themifyd41d.eot" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\SideBar.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Header.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Footer.cshtml" />
+    <Content Include="Areas\Admin\Assets\plugins\summernote\dist\font\summernoted41d.eot" />
+    <Content Include="Areas\Admin\Assets\plugins\summernote\dist\font\summernotef534.eot" />
+    <Content Include="Areas\Admin\Assets\plugins\summernote\dist\font\summernotef534.ttf" />
+    <Content Include="Areas\Admin\Assets\plugins\summernote\dist\font\summernotef534.woff" />
+    <Content Include="Areas\Admin\Views\Products\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Login\Login.cshtml" />
+    <EntityDeploy Include="Models\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -739,6 +824,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Assets\products\" />
+    <Folder Include="Areas\Admin\Data\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -789,7 +876,10 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
   </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
