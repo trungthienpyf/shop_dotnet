@@ -12,7 +12,8 @@ namespace Shop_dotNet.Controllers
         ShopEntities db = new ShopEntities();
         public ActionResult Index()
         {
-            return View();
+
+            return View(db.products);
         }
 
         public ActionResult About()

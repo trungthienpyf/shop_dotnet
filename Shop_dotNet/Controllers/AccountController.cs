@@ -11,7 +11,7 @@ namespace Shop_dotNet.Controllers
 {
     public class AccountController : Controller
     {
-        private ShopEntities1 _dbContext = new ShopEntities1();
+        private ShopEntities _dbContext = new ShopEntities();
         // GET: Account
         public ActionResult Login()
         {
@@ -19,19 +19,19 @@ namespace Shop_dotNet.Controllers
         }
         [HttpPost]
  
-        public ActionResult Login(string email, string password)
+        public ActionResult Login(string email, string passsword)
         {
             if (ModelState.IsValid)
             {
 
-                var data = _dbContext.customers.Where(s => s.email.Equals(email) && s.passsword.Equals(password)).ToList();
+                var data = _dbContext.customers.Where(s => s.email == email && s.passsword== passsword).ToList();
                 if (data.Count() > 0)
                 {
                     //add session
                     Session["Name"] = data.FirstOrDefault().name;
                     Session["Email"] = data.FirstOrDefault().email;
                     Session["idUser"] = data.FirstOrDefault().id;
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index","Home");
                 }
                 else
                 {
