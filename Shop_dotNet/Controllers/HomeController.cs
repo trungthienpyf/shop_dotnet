@@ -9,7 +9,7 @@ namespace Shop_dotNet.Controllers
 {
     public class HomeController : Controller
     {
-        ShopEntities1 db = new ShopEntities1();
+        ShopEntities db = new ShopEntities();
         public ActionResult Index()
         {
             return View();

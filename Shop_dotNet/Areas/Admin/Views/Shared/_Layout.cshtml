@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link rel="stylesheet"
+          href="/Areas/Admin/Assets/plugins/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Plugins css -->
+    <link rel="stylesheet" href="/Areas/Admin/Assets/plugins/charts-c3/c3.min.css" />
+
+    <!-- Core css -->
+    <link rel="stylesheet" href="/Areas/Admin/Assets/css/main.css" />
+    <link rel="stylesheet" href="/Areas/Admin/Assets/css/theme1.css" />
+</head>
+<body>
+    <div class="page-loader-wrapper">
+        <div class="loader">
+        </div>
+    </div>
+
+    <div id="main_content">
+        @Html.Partial("SideBar")
+        <div class="page">
+            <div id="page_top" class="section-body top_dark">
+
+                @Html.Partial("Header")
+                </div>
+            <div class="section-body mt-3">
+                <div class="container-fluid">
+                    <div class="row clearfix">
+                        
+                            @RenderBody()
+                     
+                    </div>
+                </div>
+            </div>
+                 @Html.Partial("Footer")
+        </div>
+
+        </div>
+        <script src="/Areas/Admin/Assets/bundles/lib.vendor.bundle.js"></script>
+
+        <script src="/Areas/Admin/Assets/bundles/apexcharts.bundle.js"></script>
+        <script src="/Areas/Admin/Assets/bundles/counterup.bundle.js"></script>
+        <script src="/Areas/Admin/Assets/bundles/knobjs.bundle.js"></script>
+        <script src="/Areas/Admin/Assets/bundles/c3.bundle.js"></script>
+
+        <script src="/Areas/Admin/Assets/js/core.js"></script>
+        <script src="/Areas/Admin/Assets/js/page/project-index.js"></script>
+</body>
+</html>
