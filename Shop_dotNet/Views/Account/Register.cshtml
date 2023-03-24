@@ -1,4 +1,4 @@
-﻿
+﻿@model Shop_dotNet.Models.customer
 @{
     ViewBag.Title = "Register";
     Layout = "~/Views/Shared/_LayoutCustom.cshtml";
@@ -19,30 +19,52 @@
         <div class="row">
             <div class="col-12 col-sm-12 col-md-6 col-lg-6 main-col offset-md-3">
                 <div class="mb-4">
-                    <form method="post" action="#" id="CustomerLoginForm" accept-charset="UTF-8" class="contact-form">
+                    <form method="post" action="@Url.Action("Register", "Account")" id="CustomerLoginForm" accept-charset="UTF-8" class="contact-form">
                         <div class="row">
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                                 <div class="form-group">
                                     <label for="FirstName">Họ và tên</label>
-                                    <input type="text" name="customer[first_name]" placeholder="" id="FirstName" autofocus="">
+                                    <input type="text" name="name" placeholder="" id="FirstName" autofocus="">
                                 </div>
                             </div>
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                                 <div class="form-group">
                                     <label for="LastName">SDT</label>
-                                    <input type="text" name="customer[last_name]" placeholder="" id="LastName">
+                                    <input type="text" name="phone" placeholder="" id="phone">
+                                    @Html.ValidationMessageFor(m => m.phone, "", new { @class = "badge badge-danger" })
+                                    @if (ViewBag.phoneError != null)
+                                    {
+                                        <span class="badge badge-danger">@ViewBag.phoneError</span>
+                                    }
+                                    @if (ViewBag.phoneDuplicate != null)
+                                    {
+                                        <span class="badge badge-danger">@ViewBag.phoneDuplicate</span>
+                                    }
+
                                 </div>
                             </div>
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                                 <div class="form-group">
                                     <label for="CustomerEmail">Email</label>
-                                    <input type="email" name="customer[email]" placeholder="" id="CustomerEmail" class="" autocorrect="off" autocapitalize="off" autofocus="">
+
+
+                                    <input type="email" name="email" placeholder="" id="CustomerEmail" class="" autocorrect="off" autocapitalize="off" autofocus="">
+                                    @Html.ValidationMessageFor(m => m.email, "", new { @class = "badge badge-danger" })
+                                    @if (ViewBag.emailError != null)
+                                    {
+                                        <span class="badge badge-danger">@ViewBag.emailError</span>
+                                    }
+                                    @if (ViewBag.emailDuplicate != null)
+                                    {
+                                        <span class="badge badge-danger">@ViewBag.emailDuplicate</span>
+                                    }
+
                                 </div>
                             </div>
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                                 <div class="form-group">
                                     <label for="CustomerPassword">Mật khẩu</label>
-                                    <input type="password" value="" name="customer[password]" placeholder="" id="CustomerPassword" class="">
+                                    <input type="password" value="" name="passsword" placeholder="" id="CustomerPassword" class="">
                                 </div>
                             </div>
                         </div>
