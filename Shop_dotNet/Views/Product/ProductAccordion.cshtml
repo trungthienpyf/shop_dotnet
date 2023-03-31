@@ -3,6 +3,8 @@ ViewBag.Title = "ProductAccordion";
 Layout = "~/Views/Shared/_LayoutCustom.cshtml";
 }
 
+<title>@Html.DisplayFor(model => model.name)</title>
+
 <!--Body Content-->
 <div id="page-content">
     <!--MainContent-->
@@ -23,7 +25,9 @@ Layout = "~/Views/Shared/_LayoutCustom.cshtml";
                         <div class="product-details-img product-single__photos bottom">
                             <div class="zoompro-wrap product-zoom-right pl-20">
                                 <div class="zoompro-span">
-                                    <img class="blur-up lazyload zoompro" data-zoom-image="~/Content/AssetsClient/images/product-detail-page/cape-dress-1.jpg" alt="" src="~/Content/AssetsClient/images/product-detail-page/cape-dress-1.jpg" />
+               
+
+                                    <img class="blur-up lazyload zoompro" data-zoom-image="/Areas/Admin/Assets/products/@Model.img" alt="" src="/Areas/Admin/Assets/products/@Model.img" />
                                 </div>
                                 <div class="product-labels"><span class="lbl on-sale">Sale</span><span class="lbl pr-label1">new</span></div>
                                 <div class="product-buttons">
@@ -52,7 +56,7 @@ Layout = "~/Views/Shared/_LayoutCustom.cshtml";
                                 </div>
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-6 feature">
                                     <img src="~/Content/AssetsClient/images/phone-call.png" alt="Hotline" title="Hotline" />
-                                    <div class="details"><h3>Hotline</h3>Talk to help line for your question on 4141 456 789, 4125 666 888</div>
+                                    <div class="details"><h3>Hotline</h3>0968888111</div>
                                 </div>
                             </div>
                         </div>
@@ -84,8 +88,8 @@ Layout = "~/Views/Shared/_LayoutCustom.cshtml";
                                     <span class="off">(<span>16</span>%)</span>
                                 </span>
                             </p>
-                            <div class="product-single__description rte">
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                            <div class="product-single__description rte"> 
+                                <p>@Html.DisplayFor(model => model.description)</p>
                             </div>
                             <form method="post" action="http://annimexweb.com/cart/add" id="product_form_10508262282" accept-charset="UTF-8" class="product-form product-form-product-template hidedropdown" enctype="multipart/form-data">
 
@@ -99,28 +103,31 @@ Layout = "~/Views/Shared/_LayoutCustom.cshtml";
                                         <div data-value="S" class="swatch-element s available">
                                             <input class="swatchInput" id="swatch-1-s" type="radio" name="option-1" value="S">
                                             <label class="swatchLbl small" for="swatch-1-s" title="S">S</label>
-                                        </div>
+                                        </div>  
                                         <div data-value="M" class="swatch-element m available">
                                             <input class="swatchInput" id="swatch-1-m" type="radio" name="option-1" value="M">
                                             <label class="swatchLbl small" for="swatch-1-m" title="M">M</label>
                                         </div>
                                     </div>
                                 </div>
-                                <p class="infolinks"><a href="#sizechart" class="sizelink btn"> Size Guide</a> <a href="#productInquiry" class="emaillink btn"> Ask About this Product</a></p>
+                                <p class="infolinks"><a href="#sizechart" class="sizelink btn"> Size Guide</a>
+                                <a href="#productInquiry" class="emaillink btn"> Ask About this Product</a></p>
                                 <!-- Product Action -->
                                 <div class="product-action clearfix">
                                     <div class="product-form__item--quantity">
                                         <div class="wrapQtyBtn">
                                             <div class="qtyField">
                                                 <a class="qtyBtn minus" href="javascript:void(0);"><i class="fa anm anm-minus-r" aria-hidden="true"></i></a>
-                                                <input type="text" id="Quantity" name="quantity" value ="1"class="product-form__input qty">
+                                                <input type="text" id="Quantity" name="quantity" value="1" class="product-form__input qty">
                                                 <a class="qtyBtn plus" href="javascript:void(0);"><i class="fa anm anm-plus-r" aria-hidden="true"></i></a>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="product-form__item--submit">
                                         <button type="button" name="add" class="btn product-form__cart-submit">
-                                            <span>@Html.ActionLink("Đặt hàng", "Buy", "Shopping", new { id = @Html.DisplayFor(model => model.id) }, null)</span>
+                                            <span>
+                                                @Html.ActionLink("Đặt hàng", "Buy", "Shopping", new { id = @Html.DisplayFor(model => model.id) }, null)
+                                                                                    </span>
                                         </button>
                                     </div>
                                 </div>
@@ -156,33 +163,10 @@ Layout = "~/Views/Shared/_LayoutCustom.cshtml";
                         <!--Product Tabs-->
                         <div class="tabs-listing">
                             <div class="tab-container">
-                                <h3 class="acor-ttl active" rel="tab1">Product Details</h3>
+                                <h3 class="acor-ttl active" rel="tab1">Thông tin sản phẩm</h3>
                                 <div id="tab1" class="tab-content">
-                                    <div class="product-description rte">
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-                                        <ul>
-                                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-                                            <li>Sed ut perspiciatis unde omnis iste natus error sit</li>
-                                            <li>Neque porro quisquam est qui dolorem ipsum quia dolor</li>
-                                            <li>Lorem Ipsum is not simply random text.</li>
-                                            <li>Free theme updates</li>
-                                        </ul>
-                                        <h3>Sed ut perspiciatis unde omnis iste natus error sit voluptatem</h3>
-                                        <p>You can change the position of any sections such as slider, banner, products, collection and so on by just dragging and dropping.&nbsp;</p>
-                                        <h3>Lorem Ipsum is not simply random text.</h3>
-                                        <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness.</p>
-                                        <p>Change colors, fonts, banners, megamenus and more. Preview changes are live before saving them.</p>
-                                        <h3>1914 translation by H. Rackham</h3>
-                                        <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness.</p>
-                                        <h3>Section 1.10.33 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC</h3>
-                                        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
-                                        <h3>The standard Lorem Ipsum passage, used since the 1500s</h3>
-                                        <p>You can use variant style from colors, images or variant images. Also available differnt type of design styles and size.</p>
-                                        <h3>Lorem Ipsum is not simply random text.</h3>
-                                        <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness.</p>
-                                        <h3>Proin ut lacus eget elit molestie posuere.</h3>
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled.</p>
-                                    </div>
+                                    <img src="//file.hstatic.net/200000580329/file/bang_sz_9404d2e2986c45ed96c55be4c022cf29_grande.png" />
+                                    
                                 </div>
                                 <h3 class="acor-ttl" rel="tab2">Product Reviews</h3>
                                 <div id="tab2" class="tab-content">
@@ -279,106 +263,7 @@ Layout = "~/Views/Shared/_LayoutCustom.cshtml";
                                         </div>
                                     </div>
                                 </div>
-                                <h3 class="acor-ttl" rel="tab3">Size Chart</h3>
-                                <div id="tab3" class="tab-content">
-                                    <h3>WOMEN'S BODY SIZING CHART</h3>
-                                    <table>
-                                        <tbody>
-                                            <tr>
-                                                <th>Size</th>
-                                                <th>XS</th>
-                                                <th>S</th>
-                                                <th>M</th>
-                                                <th>L</th>
-                                                <th>XL</th>
-                                            </tr>
-                                            <tr>
-                                                <td>Chest</td>
-                                                <td>31" - 33"</td>
-                                                <td>33" - 35"</td>
-                                                <td>35" - 37"</td>
-                                                <td>37" - 39"</td>
-                                                <td>39" - 42"</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Waist</td>
-                                                <td>24" - 26"</td>
-                                                <td>26" - 28"</td>
-                                                <td>28" - 30"</td>
-                                                <td>30" - 32"</td>
-                                                <td>32" - 35"</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Hip</td>
-                                                <td>34" - 36"</td>
-                                                <td>36" - 38"</td>
-                                                <td>38" - 40"</td>
-                                                <td>40" - 42"</td>
-                                                <td>42" - 44"</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Regular inseam</td>
-                                                <td>30"</td>
-                                                <td>30½"</td>
-                                                <td>31"</td>
-                                                <td>31½"</td>
-                                                <td>32"</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Long (Tall) Inseam</td>
-                                                <td>31½"</td>
-                                                <td>32"</td>
-                                                <td>32½"</td>
-                                                <td>33"</td>
-                                                <td>33½"</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <h3>MEN'S BODY SIZING CHART</h3>
-                                    <table>
-                                        <tbody>
-                                            <tr>
-                                                <th>Size</th>
-                                                <th>XS</th>
-                                                <th>S</th>
-                                                <th>M</th>
-                                                <th>L</th>
-                                                <th>XL</th>
-                                                <th>XXL</th>
-                                            </tr>
-                                            <tr>
-                                                <td>Chest</td>
-                                                <td>33" - 36"</td>
-                                                <td>36" - 39"</td>
-                                                <td>39" - 41"</td>
-                                                <td>41" - 43"</td>
-                                                <td>43" - 46"</td>
-                                                <td>46" - 49"</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Waist</td>
-                                                <td>27" - 30"</td>
-                                                <td>30" - 33"</td>
-                                                <td>33" - 35"</td>
-                                                <td>36" - 38"</td>
-                                                <td>38" - 42"</td>
-                                                <td>42" - 45"</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Hip</td>
-                                                <td>33" - 36"</td>
-                                                <td>36" - 39"</td>
-                                                <td>39" - 41"</td>
-                                                <td>41" - 43"</td>
-                                                <td>43" - 46"</td>
-                                                <td>46" - 49"</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <div class="text-center">
-                                        <img src="~/Content/AssetsClient/images/size.jpg" alt="" />
-                                    </div>
-                                </div>
+                                
                                 <h3 class="acor-ttl" rel="tab4">Shipping &amp; Returns</h3>
                                 <div id="tab4" class="tab-content">
                                     <h4>Returns Policy</h4>
