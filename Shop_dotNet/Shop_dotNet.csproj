@@ -137,9 +137,11 @@
     <Compile Include="Controllers\PageController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ShoppingController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\category.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -172,6 +174,7 @@
     </Compile>
     <Compile Include="Models\UsersRoleProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Scripts\cartController.js" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Assets\bundles\apexcharts.bundle.js" />
@@ -821,11 +824,14 @@
     <Content Include="Views\Product\ProductAccordion.cshtml" />
     <Content Include="Views\Page\AboutUs.cshtml" />
     <Content Include="Views\Page\CollectionPage.cshtml" />
+    <Content Include="Views\Shopping\Index.cshtml" />
+    <Content Include="Views\Shopping\CheckOut.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Assets\products\" />
     <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Views\cart\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
