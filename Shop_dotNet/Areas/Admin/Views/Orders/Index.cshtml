@@ -1,76 +1,122 @@
-﻿@model IEnumerable<Shop_dotNet.Models.order>
+﻿@model PagedList.IPagedList<Shop_dotNet.Models.order>
+@using PagedList.Mvc;
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<div class="col-12">
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.time)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.name_receive)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.phone_receive)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.address_receive)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.note)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.status)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.total_price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.customer.name)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.time)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.name_receive)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.phone_receive)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.address_receive)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.note)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.status)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.total_price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.customer.name)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
-        </td>
-    </tr>
-}
+    <h2>Đơn hàng</h2>
 
-</table>
+
+    <div class="card">
+        <div class="card-body">
+            @using (Html.BeginForm())
+            {
+                <div class="row">
+
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="q" placeholder="Search">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <button type="submit" class="btn btn-primary btn-block" title="">Search</button>
+                    </div>
+
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<div class="col-12">
+    <div class="card">
+        <div class="table-responsive">
+            <table class="table table-hover table-striped table-vcenter mb-0 text-nowrap">
+                <thead>
+                    <tr>
+                        <th colspan="5">Đơn hàng</th>
+                        <th colspan="3">Hành động</th>
+                    </tr>
+                    <tr>
+
+                        <th>Id</th>
+                        <th>Tên người nhận</th>
+                        <th>Số điện thoại người nhận</th>
+                        <th>Địa chỉ người nhận</th>
+                        <th>Ghi chú</th>
+                        <th>Giá tiền</th>
+                        <th>Trạng thái</th>
+                        <th>Hành động</th>
+
+                        <th>Xem chi tiết</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+
+                            <td><a href="#">#@item.id</a></td>
+                            <td><span>@item.name_receive</span></td>
+                            <td><span>@item.phone_receive</span></td>
+                            <td><span>@item.address_receive</span></td>
+
+                            <td><div style=" overflow: hidden; inline-size: 150px;">@item.note</div></td>
+                            <td>@item.total_price</td>
+                            @if (item.status == 1)
+                            {
+
+                                <td><span>Đã phê duyệt</span></td>
+                            }
+                            else if (item.status == 2)
+                            {
+
+                                <td><span>Đã hủyt</span></td>
+
+                            }
+                            else
+                            {
+                                <td><span>Đang đặt</span></td>
+                            }
+                            @if (item.status > 0)
+                            {
+
+                                <td>
+                                    <div style="color:#ccc">Duyệt đơn</div>
+                                    <div style="color:#ccc">Hủy đơn</div>
+
+                                </td>
+                            }
+
+                            else
+                            {
+                                <td>
+                                    <div><a href="/Admin/Orders/UpdateStatus?type=1&id=@item.id">Duyệt đơn</a></div>
+                                    <div><a href="/Admin/Orders/UpdateStatus?type=2&id=@item.id">Hủy đơn</a></div>
+
+                                </td>
+                            }
+
+                            <td>
+                                <div> @Html.ActionLink("Chi tiết", "Details", new { id = item.id }) </div>
+
+
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+    <div style="float:right">
+        @Html.PagedListPager(Model, page => Url.Action("Index",
+            new { page }))
+    </div>
+</div>

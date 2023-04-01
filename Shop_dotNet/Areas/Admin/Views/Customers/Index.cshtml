@@ -1,76 +1,105 @@
-﻿@model IEnumerable<Shop_dotNet.Models.customer>
+﻿@model PagedList.IPagedList<Shop_dotNet.Models.customer>
+@using PagedList.Mvc;
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<div class="col-12">
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.gender)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.birthday)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.passsword)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.phone)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.address)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.role)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.gender)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.birthday)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.passsword)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.phone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.address)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.role)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
-        </td>
-    </tr>
-}
+    <h2>Người dùng</h2>
 
-</table>
+    <p>
+        @Html.ActionLink("Thêm người dùng", "Create")
+    </p>
+    <div class="card">
+        <div class="card-body">
+            @using (Html.BeginForm())
+            {
+                <div class="row">
+
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="q" placeholder="Search">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <button type="submit" class="btn btn-primary btn-block" title="">Search</button>
+                    </div>
+
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<div class="col-12">
+    <div class="card">
+        <div class="table-responsive">
+            <table class="table table-hover table-striped table-vcenter mb-0 text-nowrap">
+                <thead>
+                    <tr>
+                        <th colspan="5">Người dùng</th>
+                        <th colspan="3">Hành động</th>
+                    </tr>
+                    <tr>
+
+
+                        <th>Tên</th>
+                        <th>Email</th>
+                        <th>Số điện thoại</th>
+                        <th>Địa chỉ</th>
+                        <th>Chức vụ</th>
+
+                        <th>Hành động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+
+
+                            <td><span>@item.name</span></td>
+                            <td><span>@item.email</span></td>
+                            <td><span>@item.phone</span></td>
+                            <td><span>@item.address</span></td>
+
+
+
+
+                            <td><span> @(item.role ==1 ? "admin": "Khách hàng") </span></td>
+                            @if (item.role == 1)
+                            {
+                                <td>
+                                    <div style="color:#ccc"> Edit </div>
+
+                                    <div style="color:#ccc"> Delete </div>
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    <div> @Html.ActionLink("Edit", "Edit", new { id = item.id }) </div>
+
+                                    <div>  @Html.ActionLink("Delete", "Delete", new { id = item.id })</div>
+                                </td>
+                            }
+
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+    <div style="float:right">
+        @Html.PagedListPager(Model, page => Url.Action("Index",
+            new { page }))
+    </div>
+
+</div>
+

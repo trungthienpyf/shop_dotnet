@@ -41,7 +41,7 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="time" Type="timestamp" StoreGeneratedPattern="Computed" />
+          <Property Name="time" Type="datetime" />
           <Property Name="name_receive" Type="nvarchar" MaxLength="200" />
           <Property Name="phone_receive" Type="varchar" MaxLength="200" />
           <Property Name="address_receive" Type="text" />
@@ -178,7 +178,7 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="time" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="time" Type="DateTime" Precision="3" />
           <Property Name="name_receive" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="phone_receive" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="address_receive" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
@@ -251,7 +251,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ShopEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="ShopEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="categories" EntityType="Self.category" />
           <EntitySet Name="customers" EntityType="Self.customer" />
           <EntitySet Name="detail_orders" EntityType="Self.detail_orders" />
@@ -279,7 +279,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ShopModelStoreContainer" CdmEntityContainer="ShopEntities">
+        <EntityContainerMapping StorageEntityContainer="ShopModelStoreContainer" CdmEntityContainer="ShopEntities1">
           <EntitySetMapping Name="categories">
             <EntityTypeMapping TypeName="ShopModel.category">
               <MappingFragment StoreEntitySet="category">
