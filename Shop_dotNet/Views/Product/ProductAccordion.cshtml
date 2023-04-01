@@ -29,11 +29,7 @@ Layout = "~/Views/Shared/_LayoutCustom.cshtml";
 
                                     <img class="blur-up lazyload zoompro" data-zoom-image="/Areas/Admin/Assets/products/@Model.img" alt="" src="/Areas/Admin/Assets/products/@Model.img" />
                                 </div>
-                                <div class="product-labels"><span class="lbl on-sale">Sale</span><span class="lbl pr-label1">new</span></div>
-                                <div class="product-buttons">
-                                    <a href="https://www.youtube.com/watch?v=93A2jOW5Mog" class="btn popup-video" title="View Video"><i class="icon anm anm-play-r" aria-hidden="true"></i></a>
-                                    <a href="#" class="btn prlightbox" title="Zoom"><i class="icon anm anm-expand-l-arrows" aria-hidden="true"></i></a>
-                                </div>
+                               
                             </div>
 
 
@@ -68,25 +64,14 @@ Layout = "~/Views/Shared/_LayoutCustom.cshtml";
                             <div class="product-nav clearfix">
                                 <a href="#" class="next" title="Next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
                             </div>
-                            <div class="prInfoRow">
-                                <div class="product-stock"> <span class="instock ">In Stock</span> <span class="outstock hide">Unavailable</span> </div>
-                                <div class="product-sku">SKU: <span class="variant-sku">19115-rdxs</span></div>
-                                <div class="product-review"><a class="reviewLink" href="#tab2"><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star-o"></i><i class="font-13 fa fa-star-o"></i><span class="spr-badge-caption">6 reviews</span></a></div>
-                            </div>
+                           
                             <p class="product-single__price product-single__price-product-template">
                                 <span class="visually-hidden">Regular price</span>
-                                <s id="ComparePrice-product-template"><span class="money">$900.00</span></s>
+                               
                                 <span class="product-price__price product-price__price-product-template product-price__sale product-price__sale--single">
-                                    <span id="ProductPrice-product-template"><span class="money">$788.00</span></span>
+                                    <span id="ProductPrice-product-template"><span class="money"> @Html.DisplayFor(model => model.price) VNĐ</span></span>
                                 </span>
-                                <span class="discount-badge">
-                                    <span class="devider">|</span>&nbsp;
-                                    <span>You Save</span>
-                                    <span id="SaveAmount-product-template" class="product-single__save-amount">
-                                        <span class="money">$100.00</span>
-                                    </span>
-                                    <span class="off">(<span>16</span>%)</span>
-                                </span>
+                               
                             </p>
                             <div class="product-single__description rte"> 
                                 <p>@Html.DisplayFor(model => model.description)</p>
@@ -110,23 +95,14 @@ Layout = "~/Views/Shared/_LayoutCustom.cshtml";
                                         </div>
                                     </div>
                                 </div>
-                                <p class="infolinks"><a href="#sizechart" class="sizelink btn"> Size Guide</a>
-                                <a href="#productInquiry" class="emaillink btn"> Ask About this Product</a></p>
+                                
                                 <!-- Product Action -->
                                 <div class="product-action clearfix">
-                                    <div class="product-form__item--quantity">
-                                        <div class="wrapQtyBtn">
-                                            <div class="qtyField">
-                                                <a class="qtyBtn minus" href="javascript:void(0);"><i class="fa anm anm-minus-r" aria-hidden="true"></i></a>
-                                                <input type="text" id="Quantity" name="quantity" value="1" class="product-form__input qty">
-                                                <a class="qtyBtn plus" href="javascript:void(0);"><i class="fa anm anm-plus-r" aria-hidden="true"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
                                     <div class="product-form__item--submit">
                                         <button type="button" name="add" class="btn product-form__cart-submit">
                                             <span>
-                                                @Html.ActionLink("Đặt hàng", "Buy", "Shopping", new { id = @Html.DisplayFor(model => model.id) }, null)
+                                                @Html.ActionLink("Thêm vào giỏ hàng", "Buy", "Shopping", new { id = @Html.DisplayFor(model => model.id) }, null)
                                                                                     </span>
                                         </button>
                                     </div>
@@ -134,11 +110,7 @@ Layout = "~/Views/Shared/_LayoutCustom.cshtml";
                                 <!-- End Product Action -->
                             </form>
                             <div class="display-table shareRow">
-                                <div class="display-table-cell medium-up--one-third">
-                                    <div class="wishlist-btn">
-                                        <a class="wishlist add-to-wishlist" href="#" title="Add to Wishlist"><i class="icon anm anm-heart-l" aria-hidden="true"></i> <span>Add to Wishlist</span></a>
-                                    </div>
-                                </div>
+                               
                                 <div class="display-table-cell text-right">
                                     <div class="social-sharing">
                                         <a target="_blank" href="#" class="btn btn--small btn--secondary btn--share share-facebook" title="Share on Facebook">

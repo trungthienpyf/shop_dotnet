@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "CheckOut";
     Layout = "~/Views/Shared/_LayoutCustom.cshtml";
+    int tong = 0;
 }
 
 <!--Body Content-->
@@ -99,26 +100,27 @@
                                             <td>
                                                 @item.product.price
                                             </td>
-                                            
+
                                             <td>
                                                 @item.Quantity
                                             </td>
                                             <td>
-                                                @(Convert.ToDecimal(item.product.price * item.Quantity))
-                                                
+                                                <div><span class="money">   @(item.product.price * item.Quantity) VNĐ</span></div>
                                             </td>
+                                            
                                         </tr>
+                                        tong += (int)(item.product.price * item.Quantity);
                                     }
                                     
                                 </tbody>
                                 <tfoot class="font-weight-600">
                                     <tr>
                                         <td colspan="3" class="text-right">Shipping </td>
-                                        <td>$50.00</td>
+                                        <td>Free Ship</td>
                                     </tr>
                                     <tr>
                                         <td colspan="3" class="text-right">Total</td>
-                                        <td>$845.00</td>
+                                        <td>@tong VNĐ</td>
                                     </tr>
                                 </tfoot>
                             </table>

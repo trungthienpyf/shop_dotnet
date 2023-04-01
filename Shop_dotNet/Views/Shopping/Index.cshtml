@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutCustom.cshtml";
+    int tong = 0;
 }
 
 
@@ -23,30 +24,31 @@
                     <table>
                         <thead class="cart__row cart__header">
                             <tr>
-                                <th colspan="2" class="text-center">Tên sản phẩm</th>
-                                <th class="text-center">Giá Tiền</th>
-                                <th class="text-center">Quantity</th>
-                                <th class="text-right">Thành tiền</th>
-                                <th class="action">&nbsp;</th>
+                                <th class="text-center"></th>
+                                <th class="text-md-left">Tên sản phẩm</th>
+                                <th class="text-left">Giá Tiền</th>
+                                <th class="text-center">Số lượng</th>
+                                <th class="text-center">Thành tiền</th>
+                                <th class="text-center">&nbsp;</th>
                             </tr>
                         </thead>
                         <tbody>
                             
                             @foreach (CartItem item in
                                 (List<CartItem>)Session["cart"])
-                            {
+                             {
                                 <tr>
                                     <td>
 
-                                        <img src="/Areas/Admin/Assets/products/@item.product.img" style="width:80px">
+                                        <img src="/Areas/Admin/Assets/products/@item.product.img"  class="text-center" style="width:80px">
                                     </td>
-                                    <td class="cart__meta small--text-left cart-flex-item">
+                                    <td class="cart__meta small--text-center cart-flex-item">
                                         <div class="list-view-item__title">
                                             <a href="#">@item.product.name </a>
                                         </div>
                                     </td>
                                     <td class="cart__price-wrapper cart-flex-item">
-                                        <span class="money">@item.product.price</span>
+                                        <span class="money">@item.product.price VNĐ</span>
                                     </td>
                                     <td class="cart__update-wrapper cart-flex-item text-right">
                                         <div class="cart__qty text-center">
@@ -60,14 +62,15 @@
                                                     </div>
                                                 }
                                     </td>
-                                    <td class="text-right small--hide cart-price">
-                                        <div><span class="money">   @(item.product.price * item.Quantity)</span></div>
+                                    <td class="text-center small--hide cart-price">
+                                        <div><span class="money">   @(item.product.price * item.Quantity) VNĐ</span></div>
                                     </td>
 
-                                    <td>
+                                    <td class="text-center">
                                         @Html.ActionLink("Xóa", "Remove", new { id = item.product.id })
                                     </td>
                                 </tr>
+                                tong+=(int)(item.product.price * item.Quantity);
                             }
                             </tbody>
                             <tfoot>
@@ -91,7 +94,7 @@
                     <div class="solid-border">
                         <div class="row">
                             <span class="col-12 col-sm-6 cart__subtotal-title"><strong>Subtotal</strong></span>
-                            <span class="col-12 col-sm-6 cart__subtotal-title cart__subtotal text-right"><span class="money">$735.00</span></span>
+                            <span class="col-12 col-sm-6 cart__subtotal-title cart__subtotal text-right"><span class="money">@tong VNĐ</span></span>
                         </div>
                         <div class="cart__shipping">Shipping &amp; taxes calculated at checkout</div>
                         <p class="cart_tearm">
@@ -100,7 +103,7 @@
                                 I agree with the terms and conditions
                             </label>
                         </p>
-                        <input type="submit" name="checkout" id="cartCheckout" class="btn btn--small-wide checkout" value="Checkout" disabled="disabled">
+                        <input href=@Url.Action("CheckOut", "Shopping") type="submit" name="checkout" id="cartCheckout" class="btn btn--small-wide checkout" value="Checkout" disabled="disabled">
                         <div class="paymnet-img"><img src="~/Content/AssetsClient/images/payment-img.jpg" alt="Payment"></div>
                     </div>
 
