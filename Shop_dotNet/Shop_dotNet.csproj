@@ -841,6 +841,9 @@
     <Content Include="Views\Product\ProductAccordion.cshtml" />
     <Content Include="Views\Page\AboutUs.cshtml" />
     <Content Include="Views\Page\CollectionPage.cshtml" />
+    <Content Include="Views\Page\Service.cshtml" />
+    <Content Include="Views\Product\Catelogy.cshtml" />
+    <Content Include="Views\Shopping\CheckOut.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

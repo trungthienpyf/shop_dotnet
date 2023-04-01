@@ -12,7 +12,7 @@
             <div class="wrapper"><h1 class="page-width"></h1></div>
         </div>
         <div class="page-title">
-            <div class="wrapper"><h1 class="page-width">Login</h1></div>
+            <div class="wrapper"><h1 class="page-width"></h1></div>
         </div>
     </div>
     <!--End Page Title-->
@@ -21,27 +21,28 @@
         <div class="row">
             <div class="col-12 col-sm-12 col-md-6 col-lg-6 main-col offset-md-3">
                 <div class="mb-4">
-                    <form method="post" action="#" id="CustomerLoginForm" accept-charset="UTF-8" class="contact-form">
+                    <form method="post" action="@Url.Action("Login", "Account")" id="CustomerLoginForm" accept-charset="UTF-8" class="contact-form">
                         <div class="row">
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                                 <div class="form-group">
                                     <label for="CustomerEmail">Email</label>
-                                    <input type="email" name="customer[email]" placeholder="" id="CustomerEmail" class="" autocorrect="off" autocapitalize="off" autofocus="">
+                                    <input type="email" name="email" placeholder="" id="CustomerEmail" class="" autocorrect="off" autocapitalize="off" autofocus="">
                                 </div>
                             </div>
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                                 <div class="form-group">
-                                    <label for="CustomerPassword">Password</label>
-                                    <input type="password" value="" name="customer[password]" placeholder="" id="CustomerPassword" class="">
+                                    <label for="CustomerPassword">Mật Khẩu</label>
+                                    <input type="password" value="" name="passsword" placeholder="" id="CustomerPassword" class="">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="text-center col-12 col-sm-12 col-md-12 col-lg-12">
+                               
                                 <input type="submit" class="btn mb-3" value="Sign In">
                                 <p class="mb-4">
-                                    <a href="#" id="RecoverPassword">Forgot your password?</a> &nbsp; | &nbsp;
-                                    <a href="@Url.Action("Register", "Account")" id="customer_register_link">Create account</a>
+                                    <a href="#" id="RecoverPassword">Quên Mật Khẩu</a> &nbsp; | &nbsp;
+                                    <a href="@Url.Action("Register", "Account")" id="customer_register_link">Đăng Ký</a>
                                 </p>
                             </div>
                         </div>

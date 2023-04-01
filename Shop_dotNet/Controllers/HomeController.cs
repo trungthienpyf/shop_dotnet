@@ -10,9 +10,18 @@ namespace Shop_dotNet.Controllers
     public class HomeController : Controller
     {
         ShopEntities db = new ShopEntities();
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
-            return View();
+            var _products = from p in db.products select p; 
+            if(!String.IsNullOrEmpty(searchString))
+            {
+                searchString = searchString.ToLower();
+                _products = _products.Where(p => p.name.ToLower().Contains(searchString.ToLower()));
+                return View(_products.ToList());
+            }
+
+
+            return View(db.products.ToList());
         }
 
         public ActionResult About()
