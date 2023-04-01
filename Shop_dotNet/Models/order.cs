@@ -21,7 +21,7 @@ namespace Shop_dotNet.Models
         }
     
         public int id { get; set; }
-        public byte[] time { get; set; }
+        public Nullable<System.DateTime> time { get; set; }
         public string name_receive { get; set; }
         public string phone_receive { get; set; }
         public string address_receive { get; set; }

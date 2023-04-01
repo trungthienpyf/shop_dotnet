@@ -1,0 +1,56 @@
+﻿@model  List<Shop_dotNet.Models.CartItem>
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    int tong = 0;
+}
+
+<h2>Chi tiết đơn hàng</h2>
+
+<div class="col-12">
+    <div class="card">
+        <div class="table-responsive">
+            <table class="table table-hover table-striped table-vcenter mb-0 text-nowrap">
+                <thead>
+                    <tr>
+                        <th colspan="5">Đơn hàng</th>
+
+                    </tr>
+                    <tr>
+
+
+                        <th>Tên sản phẩm</th>
+                        <th>Hình ảnh</th>
+                        <th>Giá tiền</th>
+                        <th>Số lượng</th>
+
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in (List<Shop_dotNet.Models.CartItem>) Model)
+                    {
+                        <tr>
+                            <td>@item.product.name</td>
+                            <td> <img src="/Areas/Admin/Assets/products/@item.product.img" width="100"/></td>
+                            <td>@item.product.price</td>
+                            <td>@item.Quantity</td>
+                        </tr>
+                        tong += (int)(item.Quantity * item.product.price);
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    Trang
+    <div style="float:right">
+        Tổng tiền @tong VND
+    </div>
+</div>
+<p>
+    
+    @Html.ActionLink("Back to List", "Index")
+</p>
+

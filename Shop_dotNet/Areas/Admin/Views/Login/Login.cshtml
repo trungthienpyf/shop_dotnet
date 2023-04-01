@@ -38,18 +38,12 @@
                     @using (Html.BeginForm())
                     {
                         <div class="card-title">Đăng nhập</div>
-                        <div class="form-group">
-                            <select class="custom-select">
-                                <option>Project Manager</option>
-                                <option>Team Leader</option>
-                                <option>Employee</option>
-                            </select>
-                        </div>
+                        
                         <div class="form-group">
                             @Html.TextBoxFor(model => model.email, new { @class = "form-control", placeholder = "UserName" })
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Mật khẩu<a href="forgot-password.html" class="float-right small">I forgot password</a></label>
+                           
                               @Html.PasswordFor(model => model.passsword, new { @class = "form-control", placeholder = "Password" })
                         </div>
                         <div class="form-group">

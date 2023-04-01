@@ -11,8 +11,7 @@ namespace Shop_dotNet.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class customer
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -25,7 +24,6 @@ namespace Shop_dotNet.Models
         public string name { get; set; }
         public Nullable<byte> gender { get; set; }
         public Nullable<System.DateTime> birthday { get; set; }
-        [RegularExpression(@"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}",ErrorMessage ="Nhap dung email")]
         public string email { get; set; }
         public string passsword { get; set; }
         public string phone { get; set; }
