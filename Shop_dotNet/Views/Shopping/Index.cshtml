@@ -1,0 +1,115 @@
+﻿@using Shop_dotNet.Models
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutCustom.cshtml";
+    int tong = 0;
+}
+
+
+<!--Body Content-->
+<div id="page-content">
+    <!--Page Title-->
+    <div class="page section-header text-center">
+        <div class="page-title">
+            <div class="wrapper"><h1 class="page-width">Your cart</h1></div>
+        </div>
+    </div>
+    <!--End Page Title-->
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-8 col-lg-8 main-col">
+                <form action="#" method="post" class="cart style2">
+                    <table>
+                        <thead class="cart__row cart__header">
+                            <tr>
+                                <th class="text-center"></th>
+                                <th class="text-md-left">Tên sản phẩm</th>
+                                <th class="text-left">Giá Tiền</th>
+                                <th class="text-center">Số lượng</th>
+                                <th class="text-center">Thành tiền</th>
+                                <th class="text-center">&nbsp;</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            @foreach (CartItem item in
+                                (List<CartItem>)Session["cart"])
+                             {
+                                <tr>
+                                    <td>
+
+                                        <img src="/Areas/Admin/Assets/products/@item.product.img"  class="text-center" style="width:80px">
+                                    </td>
+                                    <td class="cart__meta small--text-center cart-flex-item">
+                                        <div class="list-view-item__title">
+                                            <a href="#">@item.product.name </a>
+                                        </div>
+                                    </td>
+                                    <td class="cart__price-wrapper cart-flex-item">
+                                        <span class="money">@item.product.price VNĐ</span>
+                                    </td>
+                                    <td class="cart__update-wrapper cart-flex-item text-right">
+                                        <div class="cart__qty text-center">
+                                                @using (Html.BeginForm("UpdateSL", "Cart"))
+                                                {
+                                                    <div class="qtyField">
+                                                        <a class="qtyBtn minus" href="/Shopping/UpdateSL?type=0&id=@item.product.id"><i class="icon icon-minus"></i></a>
+                                                        <input class="cart__qty-input qty" type="text" name="updates[]" id="qty" value=@item.Quantity pattern="[0-9]*">
+                                                        <a class="qtyBtn plus" href="/Shopping/UpdateSL?type=1&id=@item.product.id"><i class="icon icon-plus"></i></a>
+
+                                                    </div>
+                                                }
+                                    </td>
+                                    <td class="text-center small--hide cart-price">
+                                        <div><span class="money">   @(item.product.price * item.Quantity) VNĐ</span></div>
+                                    </td>
+
+                                    <td class="text-center">
+                                        @Html.ActionLink("Xóa", "Remove", new { id = item.product.id })
+                                    </td>
+                                </tr>
+                                tong+=(int)(item.product.price * item.Quantity);
+                            }
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="3" class="text-left"><a href=@Url.Action("Index","Home") class="btn--link cart-continue"><i class="icon icon-arrow-circle-left"></i> Continue shopping</a></td>
+                                    
+                                </tr>
+                            </tfoot>
+                        </table>
+
+
+                    </form>
+                </div>
+                <div class="col-12 col-sm-12 col-md-4 col-lg-4 cart__footer">
+                    <div class="cart-note">
+                        <div class="solid-border">
+                            <h5><label for="CartSpecialInstructions" class="cart-note__label small--text-center">Add a note to your order</label></h5>
+                            <textarea name="note" id="CartSpecialInstructions" class="cart-note__input"></textarea>
+                        </div>
+                    </div>
+                    <div class="solid-border">
+                        <div class="row">
+                            <span class="col-12 col-sm-6 cart__subtotal-title"><strong>Subtotal</strong></span>
+                            <span class="col-12 col-sm-6 cart__subtotal-title cart__subtotal text-right"><span class="money">@tong VNĐ</span></span>
+                        </div>
+                        <div class="cart__shipping">Shipping &amp; taxes calculated at checkout</div>
+                        <p class="cart_tearm">
+                            <label>
+                                <input type="checkbox" name="tearm" id="cartTearm" class="checkbox" value="tearm" required="">
+                                I agree with the terms and conditions
+                            </label>
+                        </p>
+                        <input href=@Url.Action("CheckOut", "Shopping") type="submit" name="checkout" id="cartCheckout" class="btn btn--small-wide checkout" value="Checkout" disabled="disabled">
+                        <div class="paymnet-img"><img src="~/Content/AssetsClient/images/payment-img.jpg" alt="Payment"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!--End Body Content-->
