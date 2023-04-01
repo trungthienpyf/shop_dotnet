@@ -1,5 +1,6 @@
-﻿@model IEnumerable<Shop_dotNet.Models.product>
-
+﻿
+@model PagedList.IPagedList<Shop_dotNet.Models.product>
+@using PagedList.Mvc;
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -15,37 +16,23 @@
     </p>
     <div class="card">
         <div class="card-body">
-            <div class="row">
-                <div class="col-lg-2 col-md-4 col-sm-6">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="id">
+            @using (Html.BeginForm())
+            {
+                <div class="row">
+
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="q" placeholder="Search">
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-2 col-md-4 col-sm-6">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Priority">
+
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <button type="submit" class="btn btn-primary btn-block" title="">Search</button>
                     </div>
+                    
                 </div>
-                <div class="col-lg-2 col-md-4 col-sm-6">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Department">
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 col-sm-6">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Agent">
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 col-sm-6">
-                    <div class="input-group">
-                        <input type="text" class="form-control" data-provide="datepicker" placeholder="Date">
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 col-sm-6">
-                    <a href="javascript:void(0);" class="btn btn-primary btn-block" title="">Search</a>
-                </div>
+            }
             </div>
-        </div>
     </div>
 </div>
 <div class="col-12">
@@ -88,10 +75,16 @@
                                 <div>  @Html.ActionLink("Delete", "Delete", new { id = item.id })</div>
                             </td>
                         </tr>
-                    }
+                        }
 
                 </tbody>
             </table>
         </div>
     </div>
+    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount 
+    <div style="float:right">
+        @Html.PagedListPager(Model, page => Url.Action("Index",
+            new { page }))
+    </div>
 </div>
+

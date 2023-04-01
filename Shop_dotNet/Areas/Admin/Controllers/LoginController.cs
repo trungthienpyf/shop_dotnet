@@ -16,6 +16,10 @@ namespace Shop_dotNet.Areas.Admin.Controllers
 
         public ActionResult Login()
         {
+            if (Session["UserId"] != null)
+            {
+                return RedirectToAction("Index", "Products");
+            }
             return View();
         }
         [HttpPost]
@@ -28,8 +32,9 @@ namespace Shop_dotNet.Areas.Admin.Controllers
                 
                 if (IsValidUser!=null)
                 {
-                   // Session["UserID"] = IsValidUser.id.ToString();
-                    //Session["email"] = IsValidUser.email.ToString();
+                    Session["UserID"] = IsValidUser.id.ToString();
+                    Session["email"] = IsValidUser.email.ToString();
+                   
                      FormsAuthentication.SetAuthCookie(model.email, false);
                     return RedirectToAction("Index", "Products");
                 }
