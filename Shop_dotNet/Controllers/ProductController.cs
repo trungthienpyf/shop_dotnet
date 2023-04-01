@@ -32,6 +32,10 @@ namespace Shop_dotNet.Controllers
             return View(product);
           
         }
+        public ActionResult Catelogy()
+        {
+            return View();
+        }
        
     }
 }

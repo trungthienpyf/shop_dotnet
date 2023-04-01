@@ -17,5 +17,9 @@ namespace Shop_dotNet.Controllers
         {
             return View();
         }
+        public ActionResult Service()
+        {
+            return View();
+        }
     }
 }
