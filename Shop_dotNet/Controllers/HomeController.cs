@@ -13,6 +13,8 @@ namespace Shop_dotNet.Controllers
         public ActionResult Index(string searchString)
         {
             var _products = from p in db.products select p; 
+            
+
             if(!String.IsNullOrEmpty(searchString))
             {
                 searchString = searchString.ToLower();

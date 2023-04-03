@@ -811,6 +811,11 @@
     <Content Include="Models\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
+    <Content Include=".vs\Shop_dotNet\FileContentIndex\36afd61f-ca2e-4fa1-bf15-351468504893.vsidx" />
+    <Content Include=".vs\Shop_dotNet\FileContentIndex\read.lock" />
+    <Content Include=".vs\Shop_dotNet\v17\workspaceFileList.bin" />
+    <Content Include=".vs\slnx.sqlite" />
+    <Content Include=".vs\VSWorkspaceState.json" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -849,6 +854,7 @@
     <Content Include="Views\Shopping\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include=".vs\Shop_dotNet\FileContentIndex\merges\" />
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Assets\products\" />
     <Folder Include="Areas\Admin\Data\" />

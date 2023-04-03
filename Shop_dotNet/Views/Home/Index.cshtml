@@ -63,7 +63,7 @@
                                                 <!-- start product image -->
                                                 <a href=@Url.Action("ProductAccordion","Product",new { id = item.id })>
                                                     <!-- image -->
-                                                    <img class="primary blur-up lazyload" src="/Areas/Admin/Assets/products/@item.img" alt="image" title="">
+                                                   <img class="primary blur-up lazyload" src="/Areas/Admin/Assets/products/@item.img" alt="image" title="">
                                                     <!-- End image -->
                                                     <!-- Hover image -->
                                                     <!-- End hover image -->
@@ -84,7 +84,7 @@
                                                 <!-- End product name -->
                                                 <!-- product price -->
                                                 <div class="product-price">
-                                                    <span class="price">@item.price VND</span>
+                                                    <span class="price">@(double.Parse(item.price+"").ToString("#,###", System.Globalization.CultureInfo.GetCultureInfo("vi-VN")) ) VND</span>
                                                 </div>
                                                 <!-- End product price -->
                                                 <!-- Variant -->
@@ -106,217 +106,13 @@
     </div>
     <!--Collection Tab slider-->
     <!--Collection Box slider-->
-    <div class="collection-box section">
-        <div class="container-fluid">
-            <div class="collection-grid">
-                <div class="collection-grid-item">
-                    <a href=@Url.Action("CollectionPage","Page") class="collection-grid-item__link">
-                        <img data-src="/Content/AssetsClient/images/collection/fashion.jpg" src="/Content/AssetsClient/images/collection/fashion.jpg" alt="Fashion" class="blur-up lazyload" />
-                        <div class="collection-grid-item__title-wrapper">
-                            <h3 class="collection-grid-item__title btn btn--secondary no-border">Fashion</h3>
-                        </div>
-                    </a>
-                </div>
-                <div class="collection-grid-item">
-                    <a href=@Url.Action("CollectionPage","Page") class="collection-grid-item__link">
-                        <img class="blur-up lazyload" data-src="/Content/AssetsClient/images/collection/cosmetic.jpg" src="/Content/AssetsClient/images/collection/cosmetic.jpg" alt="Cosmetic" />
-                        <div class="collection-grid-item__title-wrapper">
-                            <h3 class="collection-grid-item__title btn btn--secondary no-border">Cosmetic</h3>
-                        </div>
-                    </a>
-                </div>
-                <div class="collection-grid-item blur-up lazyloaded">
-                    <a href=@Url.Action("CollectionPage","Page") class="collection-grid-item__link">
-                        <img data-src="/Content/AssetsClient/images/collection/bag.jpg" src="/Content/AssetsClient/images/collection/bag.jpg" alt="Bag" class="blur-up lazyload" />
-                        <div class="collection-grid-item__title-wrapper">
-                            <h3 class="collection-grid-item__title btn btn--secondary no-border">Bag</h3>
-                        </div>
-                    </a>
-                </div>
-                <div class="collection-grid-item">
-                    <a href=@Url.Action("CollectionPage","Page") class="collection-grid-item__link">
-                        <img data-src="/Content/AssetsClient/images/collection/accessories.jpg" src="/Content/AssetsClient/images/collection/accessories.jpg" alt="Accessories" class="blur-up lazyload" />
-                        <div class="collection-grid-item__title-wrapper">
-                            <h3 class="collection-grid-item__title btn btn--secondary no-border">Accessories</h3>
-                        </div>
-                    </a>
-                </div>
-                <div class="collection-grid-item">
-                    <a href=@Url.Action("CollectionPage","Page") class="collection-grid-item__link">
-                        <img data-src="/Content/AssetsClient/images/collection/shoes.jpg" src="/Content/AssetsClient/images/collection/shoes.jpg" alt="Shoes" class="blur-up lazyload" />
-                        <div class="collection-grid-item__title-wrapper">
-                            <h3 class="collection-grid-item__title btn btn--secondary no-border">Shoes</h3>
-                        </div>
-                    </a>
-                </div>
-                <div class="collection-grid-item">
-                    <a href=@Url.Action("CollectionPage","Page") class="collection-grid-item__link">
-                        <img data-src="/Content/AssetsClient/images/collection/jewellry.jpg" src="/Content/AssetsClient/images/collection/jewellry.jpg" alt="Jewellry" class="blur-up lazyload" />
-                        <div class="collection-grid-item__title-wrapper">
-                            <h3 class="collection-grid-item__title btn btn--secondary no-border">Jewellry</h3>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
+    
     <!--End Collection Box slider-->
     <!--Logo Slider-->
-    <div class="section logo-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                    <div class="logo-bar">
-                        <div class="logo-bar__item">
-                            <img src="/Content/AssetsClient/images/logo/brandlogo1.png" alt="" title="" />
-                        </div>
-                        <div class="logo-bar__item">
-                            <img src="/Content/AssetsClient/images/logo/brandlogo2.png" alt="" title="" />
-                        </div>
-                        <div class="logo-bar__item">
-                            <img src="/Content/AssetsClient/images/logo/brandlogo3.png" alt="" title="" />
-                        </div>
-                        <div class="logo-bar__item">
-                            <img src="/Content/AssetsClient/images/logo/brandlogo4.png" alt="" title="" />
-                        </div>
-                        <div class="logo-bar__item">
-                            <img src="/Content/AssetsClient/images/logo/brandlogo5.png" alt="" title="" />
-                        </div>
-                        <div class="logo-bar__item">
-                            <img src="/Content/AssetsClient/images/logo/brandlogo6.png" alt="" title="" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    
     <!--End Logo Slider-->
     <!--Featured Product-->
-    <div class="product-rows section">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                    <div class="section-header text-center">
-                        <h2 class="h2">Featured collection</h2>
-                        <p>Our most popular products based on sales</p>
-                    </div>
-                </div>
-            </div>
-            <div class="grid-products">
-                <div class="row">
-                    <div class="col-6 col-sm-6 col-md-4 col-lg-4 item grid-view-item style2">
-                        <div class="grid-view_image">
-                            <!-- start product image -->
-                            <a href="product-accordion.html" class="grid-view-item__link">
-                                <!-- image -->
-                                <img class="grid-view-item__image primary blur-up lazyload" data-src="/Content/AssetsClient/images/product-images/product-image1.jpg" src="/Content/AssetsClient/images/product-images/product-image1.jpg" alt="image" title="product">
-                                <!-- End image -->
-                                <!-- Hover image -->
-                                <img class="grid-view-item__image hover blur-up lazyload" data-src="/Content/AssetsClient/images/product-images/product-image1-1.jpg" src="/Content/AssetsClient/images/product-images/product-image1-1.jpg" alt="image" title="product">
-                                <!-- End hover image -->
-                                
-                            </a>
-                            <!-- end product image -->
-                            <!--start product details -->
-                            <div class="product-details hoverDetails text-center mobile">
-                                <!-- product name -->
-                                <div class="product-name">
-                                    <a href="product-accordion.html">Edna Dress</a>
-                                </div>
-                                <!-- End product name -->
-                                <!-- product price -->
-                                <div class="product-price">
-                                    <span class="old-price">$500.00</span>
-                                    <span class="price">$600.00</span>
-                                </div>
-                                <!-- End product price -->
-                                <!-- product button -->
-                                <div class="button-set">
-                                    
-                                    
-                                    
-                                </div>
-                                <!-- end product button -->
-                            </div>
-                            <!-- Variant -->
-                            <!-- End Variant -->
-                            <!-- End product details -->
-                        </div>
-                    </div>
-                    <div class="col-6 col-sm-6 col-md-4 col-lg-4 item grid-view-item style2">
-                        <div class="grid-view_image">
-                            <!-- start product image -->
-                            <a href="product-accordion.html" class="grid-view-item__link">
-                                <!-- image -->
-                                <img class="grid-view-item__image primary blur-up lazyload" data-src="/Content/AssetsClient/images/product-images/product-image2.jpg" src="/Content/AssetsClient/images/product-images/product-image2.jpg" alt="image" title="product">
-                                <!-- End image -->
-                                <!-- Hover image -->
-                                <img class="grid-view-item__image hover blur-up lazyload" data-src="/Content/AssetsClient/images/product-images/product-image2-1.jpg" src="/Content/AssetsClient/images/product-images/product-image2-1.jpg" alt="image" title="product">
-                                <!-- End hover image -->
-                               
-                            </a>
-                            <!-- end product image -->
-                            <!--start product details -->
-                            <div class="product-details hoverDetails text-center mobile">
-                                <!-- product name -->
-                                <div class="product-name">
-                                    <a href="product-accordion.html">Elastic Waist Dress</a>
-                                </div>
-                                <!-- End product name -->
-                                <!-- product price -->
-                                <div class="product-price">
-                                    <span class="price">$748.00</span>
-                                </div>
-                                <!-- product button -->
-                                <div class="button-set">
-                                   
-                                </div>
-                                <!-- end product button -->
-                            </div>
-                            <!-- Variant -->
-                            <!-- End Variant -->
-                            <!-- End product details -->
-                        </div>
-                    </div>
-                    <div class="col-6 col-sm-6 col-md-4 col-lg-4 item grid-view-item style2">
-                        <div class="grid-view_image">
-                            <!-- start product image -->
-                            <a href="product-accordion.html" class="grid-view-item__link">
-                                <!-- image -->
-                                <img class="grid-view-item__image primary blur-up lazyload" data-src="/Content/AssetsClient/images/product-images/product-image3.jpg" src="/Content/AssetsClient/images/product-images/product-image3.jpg" alt="image" title="product">
-                                <!-- End image -->
-                                <!-- Hover image -->
-                                <img class="grid-view-item__image hover blur-up lazyload" data-src="/Content/AssetsClient/images/product-images/product-image3-1.jpg" src="/Content/AssetsClient/images/product-images/product-image3-1.jpg" alt="image" title="product">
-                                <!-- End hover image -->
-                                
-                            </a>
-                            <!-- end product image -->
-                            <!--start product details -->
-                            <div class="product-details hoverDetails text-center mobile">
-                                <!-- product name -->
-                                <div class="product-name">
-                                    <a href="product-accordion.html">3/4 Sleeve Kimono Dress</a>
-                                </div>
-                                <!-- End product name -->
-                                <!-- product price -->
-                                <div class="product-price">
-                                    <span class="price">$550.00</span>
-                                </div>
-                                <!-- product button -->
-                                
-                                <!-- end product button -->
-                            </div>
-                            <!-- Variant -->
-                            <!-- End Variant -->
-                            <!-- End product details -->
-                        </div>
-                    </div>
-                    
-                    
-                </div>
-            </div>
-        </div>
-    </div>
+    
     <!--End Featured Product-->
     <!--Latest Blog-->
     <!--End Latest Blog-->
@@ -343,8 +139,8 @@
                         </li>
                         <li class="display-table-cell">
                             <i class="icon anm anm-credit-card-front-r"></i>
-                            <h5>Secure Payments</h5>
-                            <span class="sub-text">All payment are Secured and trusted.</span>
+                            <h5>Bảo Mật Thanh Toán</h5>
+                            <span class="sub-text">Tất cả các khoản thanh toán đều an toàn và đáng tin cậy.</span>
                         </li>
                     </ul>
                 </div>

@@ -26,7 +26,7 @@ Layout = "~/Views/Shared/_LayoutCustom.cshtml";
                         <div class="product-details-img product-single__photos bottom">
                             <div class="zoompro-wrap product-zoom-right pl-20">
                                 <div class="zoompro-span">
-               
+
 
                                     <img class="blur-up lazyload zoompro" data-zoom-image="/Areas/Admin/Assets/products/@Model.img" alt="" src="/Areas/Admin/Assets/products/@Model.img" />
                                 </div>
@@ -70,26 +70,23 @@ Layout = "~/Views/Shared/_LayoutCustom.cshtml";
                                 <a href="#" class="next" title="Next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
                             </div>
                             <div class="prInfoRow">
-                                <div class="product-stock"> <span class="instock ">In Stock</span> <span class="outstock hide">Unavailable</span> </div>
                                 <div class="product-sku">SKU: <span class="variant-sku">19115-rdxs</span></div>
                                 <div class="product-review"><a class="reviewLink" href="#tab2"><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star-o"></i><i class="font-13 fa fa-star-o"></i><span class="spr-badge-caption">6 reviews</span></a></div>
                             </div>
                             <p class="product-single__price product-single__price-product-template">
                                 <span class="visually-hidden">Regular price</span>
-                                <s id="ComparePrice-product-template"><span class="money">$900.00</span></s>
                                 <span class="product-price__price product-price__price-product-template product-price__sale product-price__sale--single">
-                                    <span id="ProductPrice-product-template"><span class="money">$788.00</span></span>
+                                    <span id="ProductPrice-product-template"><span class="money">@(double.Parse(Model.price+"").ToString("#,###", System.Globalization.CultureInfo.GetCultureInfo("vi-VN")) ) VND</span></span>
                                 </span>
                                 <span class="discount-badge">
                                     <span class="devider">|</span>&nbsp;
                                     <span>You Save</span>
                                     <span id="SaveAmount-product-template" class="product-single__save-amount">
-                                        <span class="money">$100.00</span>
                                     </span>
                                     <span class="off">(<span>16</span>%)</span>
                                 </span>
                             </p>
-                            <div class="product-single__description rte"> 
+                            <div class="product-single__description rte">
                                 <p>@Html.DisplayFor(model => model.description)</p>
                             </div>
                             <form method="post" action="http://annimexweb.com/cart/add" id="product_form_10508262282" accept-charset="UTF-8" class="product-form product-form-product-template hidedropdown" enctype="multipart/form-data">
@@ -104,15 +101,17 @@ Layout = "~/Views/Shared/_LayoutCustom.cshtml";
                                         <div data-value="S" class="swatch-element s available">
                                             <input class="swatchInput" id="swatch-1-s" type="radio" name="option-1" value="S">
                                             <label class="swatchLbl small" for="swatch-1-s" title="S">S</label>
-                                        </div>  
+                                        </div>
                                         <div data-value="M" class="swatch-element m available">
                                             <input class="swatchInput" id="swatch-1-m" type="radio" name="option-1" value="M">
                                             <label class="swatchLbl small" for="swatch-1-m" title="M">M</label>
                                         </div>
                                     </div>
                                 </div>
-                                <p class="infolinks"><a href="#sizechart" class="sizelink btn"> Size Guide</a>
-                                <a href="#productInquiry" class="emaillink btn"> Ask About this Product</a></p>
+                                <p class="infolinks">
+                                    <a href="#sizechart" class="sizelink btn"> Size Guide</a>
+                                    <a href="#productInquiry" class="emaillink btn"> Ask About this Product</a>
+                                </p>
                                 <!-- Product Action -->
                                 <div class="product-action clearfix">
                                     <div class="product-form__item--quantity">
@@ -128,7 +127,7 @@ Layout = "~/Views/Shared/_LayoutCustom.cshtml";
                                         <button type="button" name="add" class="btn product-form__cart-submit">
                                             <span>
                                                 @Html.ActionLink("Đặt hàng", "Buy", "Shopping", new { id = @Html.DisplayFor(model => model.id) }, null)
-                                                                                    </span>
+                                            </span>
                                         </button>
                                     </div>
                                 </div>
@@ -136,7 +135,7 @@ Layout = "~/Views/Shared/_LayoutCustom.cshtml";
                             </form>
                             <div class="display-table shareRow">
                                 <div class="display-table-cell medium-up--one-third">
-                                   
+
                                 </div>
                                 <div class="display-table-cell text-right">
                                     <div class="social-sharing">
@@ -165,7 +164,7 @@ Layout = "~/Views/Shared/_LayoutCustom.cshtml";
                                 <h3 class="acor-ttl active" rel="tab1">Thông tin sản phẩm</h3>
                                 <div id="tab1" class="tab-content">
                                     <img src="//file.hstatic.net/200000580329/file/bang_sz_9404d2e2986c45ed96c55be4c022cf29_grande.png" />
-                                    
+
                                 </div>
                                 <h3 class="acor-ttl" rel="tab2">Product Reviews</h3>
                                 <div id="tab2" class="tab-content">
@@ -262,7 +261,7 @@ Layout = "~/Views/Shared/_LayoutCustom.cshtml";
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <h3 class="acor-ttl" rel="tab4">Chính sách đổi trả</h3>
                                 <div id="tab4" class="tab-content">
                                     <h4>
@@ -280,7 +279,8 @@ Layout = "~/Views/Shared/_LayoutCustom.cshtml";
                                             Không đủ số lượng, không đủ bộ như trong đơn hàng.
                                         </li>
                                         <li>
-                                            Tình trạng bên ngoài bị ảnh hưởng như rách bao bì, bong tróc, bể vỡ…</li>
+                                            Tình trạng bên ngoài bị ảnh hưởng như rách bao bì, bong tróc, bể vỡ…
+                                        </li>
                                     </ul>
                                     <p>
                                         Khách hàng có trách nhiệm trình giấy tờ liên quan chứng minh sự thiếu sót trên để hoàn thành việc hoàn trả/đổi trả hàng hóa.
@@ -299,7 +299,91 @@ Layout = "~/Views/Shared/_LayoutCustom.cshtml";
                     </div>
                 </div>
                 <!--End-product-single-->
-                @Html.Partial("_product_grid-products")
+                @*Html.Partial("_product_grid-products")*@
+
+
+                <!--Related Product Slider-->
+                <div class="related-product grid-products" style="margin-top:30px">
+                    <header class="section-header">
+                        <h2 class="section-header__title text-center h2">
+                        <span><strong>Sản Phẩm Liên Quan</strong></span></h2>
+                    </header>
+                    <div class="productPageSlider">
+                        @foreach (var item in ViewBag.products)
+                        {
+                            <div class="col-12 item">
+                                <!-- start product image -->
+
+                                <div class="product-image">
+                                    <!-- start product image -->
+                                    <a href="@Url.Action("ProductAccordion","Product",new { id = item.id })">
+                                        <!-- image -->
+                                        <img class="primary blur-up lazyload" src="/Areas/Admin/Assets/products/@item.img" alt="image" title="">
+                                        <!-- End image -->
+                                        <!-- Hover image -->
+                                        <img class="hover blur-up lazyload" src="/Areas/Admin/Assets/products/@item.img" alt="image" title="product">
+                                        <!-- End hover image -->
+                                        <!-- product label -->
+                                        <div class="product-labels rectangular"><span class="lbl on-sale">-16%</span> <span class="lbl pr-label1">new</span></div>
+                                        <!-- End product label -->
+                                    </a>
+                                    <!-- end product image -->
+                                    <!-- Start product button -->
+                                    <form class="variants add" action="#" onclick="window.location.href='cart.html'" method="post">
+                                        <button class="btn btn-addto-cart" type="button" tabindex="0">Select Options</button>
+                                    </form>
+                                    <div class="button-set">
+                                        <a href="#" title="Quick View" class="quick-view" tabindex="0">
+                                            <i class="icon anm anm-search-plus-r"></i>
+                                        </a>
+                                        <div class="wishlist-btn">
+                                            <a class="wishlist add-to-wishlist" href="wishlist.html">
+                                                <i class="icon anm anm-heart-l"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <!-- end product button -->
+                                </div>
+
+
+                                <!-- end product image -->
+                                <!--start product details -->
+                                <div class="product-details text-center">
+                                    <!-- product name -->
+                                    <div class="product-name">
+                                        <a href="#">@item.name</a>
+                                    </div>
+                                    <!-- End product name -->
+                                    <!-- product price -->
+                                    <div class="product-price">
+                                        <span class="old-price">$500.00</span>
+                                        <span class="price">$600.00</span>
+                                    </div>
+                                    <!-- End product price -->
+
+                                    <div class="product-review">
+                                        <i class="font-13 fa fa-star"></i>
+                                        <i class="font-13 fa fa-star"></i>
+                                        <i class="font-13 fa fa-star"></i>
+                                        <i class="font-13 fa fa-star-o"></i>
+                                        <i class="font-13 fa fa-star-o"></i>
+                                    </div>
+                                    <!-- Variant -->
+                                    
+                                    <!-- End Variant -->
+                                </div>
+                                <!-- End product details -->
+                            </div>
+                        }
+
+                    </div>
+                </div>
+                        
+                <!--End Related Product Slider-->
+                <!--Recently Product Slider-->
+                
+                <!--End Recently Product Slider-->
+
             </div>
             <!--#ProductSection-product-template-->
         </div>
