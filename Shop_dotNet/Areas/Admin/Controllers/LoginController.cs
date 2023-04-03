@@ -16,6 +16,10 @@ namespace Shop_dotNet.Areas.Admin.Controllers
 
         public ActionResult Login()
         {
+            if (Session["AdminID"] != null)
+            {
+                return RedirectToAction("Index", "Products");
+            }
             return View();
         }
         [HttpPost]
@@ -28,9 +32,11 @@ namespace Shop_dotNet.Areas.Admin.Controllers
                 
                 if (IsValidUser!=null)
                 {
-                   // Session["UserID"] = IsValidUser.id.ToString();
-                    //Session["email"] = IsValidUser.email.ToString();
-                     FormsAuthentication.SetAuthCookie(model.email, false);
+                    Session["AdminID"] = IsValidUser.id.ToString();
+                    Session["EmailAdmin"] = IsValidUser.email.ToString();
+                    Session["NameAdmin"] = IsValidUser.name.ToString();
+
+                    FormsAuthentication.SetAuthCookie(model.email, false);
                     return RedirectToAction("Index", "Products");
                 }
                 ModelState.AddModelError("", "Username hoặc Password không đúng");
@@ -39,8 +45,9 @@ namespace Shop_dotNet.Areas.Admin.Controllers
         }
         public ActionResult Logout()
         {
-            Session.Remove("UserID");
-            Session.Remove("Email");
+            Session.Remove("AdminID");
+            Session.Remove("NameAdmin");
+            Session.Remove("EmailAdmin");
             return RedirectToAction("Login");
         }
     }
