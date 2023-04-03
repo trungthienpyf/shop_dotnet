@@ -1,4 +1,6 @@
-﻿                    <!--Related Product Slider-->
+﻿
+
+<!--Related Product Slider-->
 <div class="related-product grid-products">
     <header class="section-header">
         <h2 class="section-header__title text-center h2"><span>Related Products</span></h2>
@@ -7,36 +9,39 @@
     <div class="productPageSlider">
         <div class="col-12 item">
             <!-- start product image -->
-            <div class="product-image">
-                <!-- start product image -->
-                <a href="#">
-                    <!-- image -->
-                    <img class="primary blur-up lazyload" data-src="/Content/AssetsClient/images/product-images/product-image1.jpg" src="/Content/AssetsClient/images/product-images/product-image1.jpg" alt="image" title="product">
-                    <!-- End image -->
-                    <!-- Hover image -->
-                    <img class="hover blur-up lazyload" data-src="/Content/AssetsClient/images/product-images/product-image1-1.jpg" src="/Content/AssetsClient/images/product-images/product-image1-1.jpg" alt="image" title="product">
-                    <!-- End hover image -->
-                    <!-- product label -->
-                    <div class="product-labels rectangular"><span class="lbl on-sale">-16%</span> <span class="lbl pr-label1">new</span></div>
-                    <!-- End product label -->
-                </a>
-                <!-- end product image -->
-                <!-- Start product button -->
-                <form class="variants add" action="#" onclick="window.location.href='cart.html'" method="post">
-                    <button class="btn btn-addto-cart" type="button" tabindex="0">Select Options</button>
-                </form>
-                <div class="button-set">
-                    <a href="#" title="Quick View" class="quick-view" tabindex="0">
-                        <i class="icon anm anm-search-plus-r"></i>
+            @foreach (var item in ViewBag.products)
+            {
+                <div class="product-image">
+                    <!-- start product image -->
+                    <a href="@Url.Action("ProductAccordion","Product",new { id = item.id })">
+                        <!-- image -->
+                        <!-- End image -->
+                        <!-- Hover image -->
+                        <img class="hover blur-up lazyload" data-src="/Content/AssetsClient/images/product-images/product-image1-1.jpg" src="/Content/AssetsClient/images/product-images/product-image1-1.jpg" alt="image" title="product">
+                        <!-- End hover image -->
+                        <!-- product label -->
+                        <div class="product-labels rectangular"><span class="lbl on-sale">-16%</span> <span class="lbl pr-label1">new</span></div>
+                        <!-- End product label -->
                     </a>
-                    <div class="wishlist-btn">
-                        <a class="wishlist add-to-wishlist" href="wishlist.html">
-                            <i class="icon anm anm-heart-l"></i>
+                    <!-- end product image -->
+                    <!-- Start product button -->
+                    <form class="variants add" action="#" onclick="window.location.href='cart.html'" method="post">
+                        <button class="btn btn-addto-cart" type="button" tabindex="0">Select Options</button>
+                    </form>
+                    <div class="button-set">
+                        <a href="#" title="Quick View" class="quick-view" tabindex="0">
+                            <i class="icon anm anm-search-plus-r"></i>
                         </a>
+                        <div class="wishlist-btn">
+                            <a class="wishlist add-to-wishlist" href="wishlist.html">
+                                <i class="icon anm anm-heart-l"></i>
+                            </a>
+                        </div>
                     </div>
+                    <!-- end product button -->
                 </div>
-                <!-- end product button -->
-            </div>
+            }
+
             <!-- end product image -->
             <!--start product details -->
             <div class="product-details text-center">

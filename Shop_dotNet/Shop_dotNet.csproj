@@ -53,6 +53,12 @@
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -137,9 +143,11 @@
     <Compile Include="Controllers\PageController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ShoppingController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\category.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -171,6 +179,8 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UsersRoleProvider.cs" />
+    <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
+    <Compile Include="obj\Release\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -236,6 +246,8 @@
     <Content Include="Areas\Admin\Assets\plugins\nestable\jquery-nestable.css" />
     <Content Include="Areas\Admin\Assets\plugins\summernote\dist\summernote.css" />
     <Content Include="Areas\Admin\Assets\plugins\sweetalert\sweetalert.css" />
+    <Content Include="bin\Shop_dotNet.dll" />
+    <Content Include="bin\Shop_dotNet.pdb" />
     <Content Include="Content\AssetsClient\css\bootstrap.min.css" />
     <Content Include="Content\AssetsClient\css\plugins.css" />
     <Content Include="Content\AssetsClient\css\responsive.css" />
@@ -734,6 +746,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -748,6 +761,17 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Content Include="obj\Debug\Shop_dotNet.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\Shop_dotNet.dll" />
+    <Content Include="obj\Debug\Shop_dotNet.pdb" />
+    <Content Include="obj\Debug\TempPE\Models.Model1.Context.cs.dll" />
+    <Content Include="obj\Debug\TempPE\Models.Model1.Designer.cs.dll" />
+    <Content Include="obj\Debug\TempPE\Models.ShopModel.Context.cs.dll" />
+    <Content Include="obj\Debug\TempPE\Models.ShopModel.cs.dll" />
+    <Content Include="obj\Debug\TempPE\Models.ShopModel.Designer.cs.dll" />
+    <Content Include="obj\Release\Shop_dotNet.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Release\Shop_dotNet.dll" />
+    <Content Include="obj\Release\Shop_dotNet.pdb" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\AssetsClient\fonts\annimex-icons0f29.eot" />
@@ -789,6 +813,27 @@
     <Content Include="Models\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
+    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <Content Include="obj\Debug\edmxResourcesToEmbed\Models\Model1.csdl" />
+    <Content Include="obj\Debug\edmxResourcesToEmbed\Models\Model1.msl" />
+    <Content Include="obj\Debug\edmxResourcesToEmbed\Models\Model1.ssdl" />
+    <Content Include="obj\Debug\edmxResourcesToEmbed\Models\ShopModel.csdl" />
+    <Content Include="obj\Debug\edmxResourcesToEmbed\Models\ShopModel.msl" />
+    <Content Include="obj\Debug\edmxResourcesToEmbed\Models\ShopModel.ssdl" />
+    <Content Include="obj\Debug\Shop_dotNet.csproj.AssemblyReference.cache" />
+    <Content Include="obj\Debug\Shop_dotNet.csproj.CopyComplete" />
+    <Content Include="obj\Debug\Shop_dotNet.csproj.CoreCompileInputs.cache" />
+    <Content Include="obj\Release\edmxResourcesToEmbed\Models\Model1.csdl" />
+    <Content Include="obj\Release\edmxResourcesToEmbed\Models\Model1.msl" />
+    <Content Include="obj\Release\edmxResourcesToEmbed\Models\Model1.ssdl" />
+    <Content Include="obj\Release\Shop_dotNet.csproj.AssemblyReference.cache" />
+    <Content Include="obj\Release\Shop_dotNet.csproj.CopyComplete" />
+    <Content Include="obj\Release\Shop_dotNet.csproj.CoreCompileInputs.cache" />
+    <Content Include=".vs\Shop_dotNet\FileContentIndex\36afd61f-ca2e-4fa1-bf15-351468504893.vsidx" />
+    <Content Include=".vs\Shop_dotNet\FileContentIndex\read.lock" />
+    <Content Include=".vs\Shop_dotNet\v17\workspaceFileList.bin" />
+    <Content Include=".vs\slnx.sqlite" />
+    <Content Include=".vs\VSWorkspaceState.json" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -823,8 +868,11 @@
     <Content Include="Views\Page\CollectionPage.cshtml" />
     <Content Include="Views\Page\Service.cshtml" />
     <Content Include="Views\Product\Catelogy.cshtml" />
+    <Content Include="Views\Shopping\CheckOut.cshtml" />
+    <Content Include="Views\Shopping\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include=".vs\Shop_dotNet\FileContentIndex\merges\" />
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Assets\products\" />
     <Folder Include="Areas\Admin\Data\" />
