@@ -99,5 +99,11 @@ namespace Shop_dotNet.Controllers
 
 
         }
+        [HttpGet]
+        public ActionResult Logout()
+        {
+            Session.Clear();
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

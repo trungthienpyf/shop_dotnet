@@ -11,6 +11,7 @@ using System.Web.Script.Serialization;
 
 namespace Shop_dotNet.Controllers
 {
+    
     public class ShoppingController : Controller
     {
         // GET: Shopping

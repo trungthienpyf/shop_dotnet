@@ -17,9 +17,6 @@
     <!-- Main Style CSS -->
     <link rel="stylesheet" href="~/Content/AssetsClient/css/style.css">
     <link rel="stylesheet" href="~/Content/AssetsClient/css/responsive.css">
-    @Scripts.Render("~/bundles/modernizr")
-    <script src="~/Content/AssetsClient/js/vendor/jquer y-3.3.1.min.js"></script>
-    @Scripts.Render("~/bundles/jqueryval")
 </head>
 <body class="template-index belle template-index-belle">
     <div id="pre-loader">
@@ -58,10 +55,10 @@
                     <div class="col-2 col-sm-4 col-md-3 col-lg-4 text-right">
                         <span class="user-menu d-block d-lg-none"><i class="anm anm-user-al" aria-hidden="true"></i></span>
                         <ul class="customer-links list-inline">
-                            @if (Session["Email"]!=null)
+                            @if (Session["Email"] != null)
                             {
                                 <li><a>@Session["Name"]</a></li>
-                                <li><a href=@Url.Action("Register", "Account")>Đăng xuất</a></li>
+                                <li><a href=@Url.Action("Logout", "Account")>Đăng xuất</a></li>
                             }
                             else
                             {
@@ -101,103 +98,30 @@
                             <!-- for mobile -->
                             <ul id="siteNav" class="site-nav medium center hidearrow">
                                 <li class="lvl1 parent megamenu">
-                                    <a href="#">Trang Chủ <i class="anm anm-angle-down-l"></i></a>
-
+                                    <a href="@Url.Action("Index","Home")">Trang Chủ <i class="anm anm-angle-down-l"></i></a>
+                                    
                                 </li>
                                 <li class="lvl1 parent megamenu">
-                                    <a href="#">Shop <i class="anm anm-angle-down-l"></i></a>
+                                    <a href="@Url.Action("Catelogy","Product")">Sản Phẩm <i class="anm anm-angle-down-l"></i></a>
                                     <div class="megamenu style4">
                                         <ul class="grid grid--uniform mmWrapper">
                                             <li class="grid__item lvl-1 col-md-3 col-lg-3">
-                                                <a href="#" class="site-nav lvl-1">Shop Pages</a>
+                                                <a href="#" class="site-nav lvl-1">Sản Phẩm</a>
                                                 <ul class="subLinks">
-                                                    <li class="lvl-2"><a href="shop-left-sidebar.html" class="site-nav lvl-2">Left Sidebar</a></li>
-                                                    <li class="lvl-2"><a href="shop-right-sidebar.html" class="site-nav lvl-2">Right Sidebar</a></li>
-                                                    <li class="lvl-2"><a href="shop-fullwidth.html" class="site-nav lvl-2">Fullwidth</a></li>
-                                                    <li class="lvl-2"><a href="shop-grid-3.html" class="site-nav lvl-2">3 items per row</a></li>
-                                                    <li class="lvl-2"><a href="shop-grid-4.html" class="site-nav lvl-2">4 items per row</a></li>
-                                                    <li class="lvl-2"><a href="shop-grid-5.html" class="site-nav lvl-2">5 items per row</a></li>
-                                                    <li class="lvl-2"><a href="shop-grid-6.html" class="site-nav lvl-2">6 items per row</a></li>
-                                                    <li class="lvl-2"><a href="shop-grid-7.html" class="site-nav lvl-2">7 items per row</a></li>
-                                                    <li class="lvl-2"><a href="shop-listview.html" class="site-nav lvl-2">Product Listview</a></li>
+                                                    <li class="lvl-2"><a href="/Product/Catelogy?catelogy=3" class="site-nav lvl-2">Áo CLB</a></li>
+                                                    <li class="lvl-2"><a href="/Product/Catelogy?catelogy=4" class="site-nav lvl-2">Áo đội tuyển</a></li>
+                                                    <li class="lvl-2"><a href="/Product/Catelogy?catelogy=5" class="site-nav lvl-2">Giày</a></li>
+                                                   
                                                 </ul>
                                             </li>
-                                            <li class="grid__item lvl-1 col-md-3 col-lg-3">
-                                                <a href="#" class="site-nav lvl-1">Shop Features</a>
-                                                <ul class="subLinks">
-                                                    <li class="lvl-2"><a href="shop-left-sidebar.html" class="site-nav lvl-2">Product Countdown <span class="lbl nm_label3">Hot</span></a></li>
-                                                    <li class="lvl-2"><a href="shop-right-sidebar.html" class="site-nav lvl-2">Infinite Scrolling</a></li>
-                                                    <li class="lvl-2"><a href="shop-grid-3.html" class="site-nav lvl-2">Pagination - Classic</a></li>
-                                                    <li class="lvl-2"><a href="shop-grid-6.html" class="site-nav lvl-2">Pagination - Load More</a></li>
-                                                    <li class="lvl-2"><a href="product-labels.html" class="site-nav lvl-2">Dynamic Product Labels</a></li>
-                                                    <li class="lvl-2"><a href="product-swatches-style.html" class="site-nav lvl-2">Product Swatches <span class="lbl nm_label2">Sale</span></a></li>
-                                                    <li class="lvl-2"><a href="product-hover-info.html" class="site-nav lvl-2">Product Hover Info</a></li>
-                                                    <li class="lvl-2"><a href="shop-grid-3.html" class="site-nav lvl-2">Product Reviews</a></li>
-                                                    <li class="lvl-2"><a href="shop-left-sidebar.html" class="site-nav lvl-2">Discount Label <span class="lbl nm_label1">New</span></a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="grid__item lvl-1 col-md-6 col-lg-6">
-                                                <a href="#"><img src="~/Content/AssetsClient/images/megamenu-bg1.jpg" alt="" title="" /></a>
+                                      
+                                            <li class="grid__item lvl-1 col-md-6 col-lg-6" s>
+                                                <a href="#"  ><img src="//theme.hstatic.net/200000580329/1000937158/14/csc_gallery_item_8_img.jpg?v=85" alt="" title="" /></a>
                                             </li>
                                         </ul>
                                     </div>
                                 </li>
-                                <li class="lvl1 parent megamenu">
-                                    <a href="#">Sản Phẩm <i class="anm anm-angle-down-l"></i></a>
-                                    <div class="megamenu style2">
-                                        <ul class="grid mmWrapper">
-                                            <li class="grid__item one-whole">
-                                                <ul class="grid">
-                                                    <li class="grid__item lvl-1 col-md-3 col-lg-3">
-                                                        <a href="#" class="site-nav lvl-1">Product Page</a>
-                                                        <ul class="subLinks">
-                                                            <li class="lvl-2"><a href="product-layout-1.html" class="site-nav lvl-2">Product Layout 1</a></li>
-                                                            <li class="lvl-2"><a href="product-layout-2.html" class="site-nav lvl-2">Product Layout 2</a></li>
-                                                            <li class="lvl-2"><a href="product-layout-3.html" class="site-nav lvl-2">Product Layout 3</a></li>
-                                                            <li class="lvl-2"><a href="product-with-left-thumbs.html" class="site-nav lvl-2">Product With Left Thumbs</a></li>
-                                                            <li class="lvl-2"><a href="product-with-right-thumbs.html" class="site-nav lvl-2">Product With Right Thumbs</a></li>
-                                                            <li class="lvl-2"><a href="product-with-bottom-thumbs.html" class="site-nav lvl-2">Product With Bottom Thumbs</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="grid__item lvl-1 col-md-3 col-lg-3">
-                                                        <a href="#" class="site-nav lvl-1">Product Features</a>
-                                                        <ul class="subLinks">
-                                                            <li class="lvl-2"><a href="short-description.html" class="site-nav lvl-2">Short Description</a></li>
-                                                            <li class="lvl-2"><a href="product-countdown.html" class="site-nav lvl-2">Product Countdown</a></li>
-                                                            <li class="lvl-2"><a href="product-video.html" class="site-nav lvl-2">Product Video</a></li>
-                                                            <li class="lvl-2"><a href="product-quantity-message.html" class="site-nav lvl-2">Product Quantity Message</a></li>
-                                                            <li class="lvl-2"><a href="product-visitor-sold-count.html" class="site-nav lvl-2">Product Visitor/Sold Count <span class="lbl nm_label3">Hot</span></a></li>
-                                                            <li class="lvl-2"><a href="product-zoom-lightbox.html" class="site-nav lvl-2">Product Zoom/Lightbox <span class="lbl nm_label1">New</span></a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="grid__item lvl-1 col-md-3 col-lg-3">
-                                                        <a href="#" class="site-nav lvl-1">Product Features</a>
-                                                        <ul class="subLinks">
-                                                            <li class="lvl-2"><a href="product-with-variant-image.html" class="site-nav lvl-2">Product with Variant Image</a></li>
-                                                            <li class="lvl-2"><a href="product-with-color-swatch.html" class="site-nav lvl-2">Product with Color Swatch</a></li>
-                                                            <li class="lvl-2"><a href="product-with-image-swatch.html" class="site-nav lvl-2">Product with Image Swatch</a></li>
-                                                            <li class="lvl-2"><a href="product-with-dropdown.html" class="site-nav lvl-2">Product with Dropdown</a></li>
-                                                            <li class="lvl-2"><a href="product-with-rounded-square.html" class="site-nav lvl-2">Product with Rounded Square</a></li>
-                                                            <li class="lvl-2"><a href="swatches-style.html" class="site-nav lvl-2">Product Swatches All Style</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="grid__item lvl-1 col-md-3 col-lg-3">
-                                                        <a href="#" class="site-nav lvl-1">Product Features</a>
-                                                        <ul class="subLinks">
-                                                            <li class="lvl-2"><a href="product-accordion.html" class="site-nav lvl-2">Product Accordion</a></li>
-                                                            <li class="lvl-2"><a href="product-pre-orders.html" class="site-nav lvl-2">Product Pre-orders <span class="lbl nm_label1">New</span></a></li>
-                                                            <li class="lvl-2"><a href="product-labels-detail.html" class="site-nav lvl-2">Product Labels</a></li>
-                                                            <li class="lvl-2"><a href="product-discount.html" class="site-nav lvl-2">Product Discount In %</a></li>
-                                                            <li class="lvl-2"><a href="product-shipping-message.html" class="site-nav lvl-2">Product Shipping Message</a></li>
-                                                            <li class="lvl-2"><a href="size-guide.html" class="site-nav lvl-2">Size Guide <span class="lbl nm_label1">New</span></a></li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="grid__item large-up--one-whole imageCol"><a href="#"><img src="~/Content/AssetsClient/images/megamenu-bg2.jpg" alt=""></a></li>
-                                        </ul>
-                                    </div>
-                                </li>
+                                
                                 <li class="lvl1 parent dropdown">
                                     <a href="#">Pages <i class="anm anm-angle-down-l"></i></a>
                                     <ul class="dropdown">
@@ -219,13 +143,9 @@
                                         <li><a href=@Url.Action("AboutUs","Page") class="site-nav">Về Chúng Tôi <span class="lbl nm_label1">New</span> </a></li>
                                         <li><a href=@Url.Action("Service","Page") class="site-nav">Điều Khoản Dịch Vụ</a></li>
                                     </ul>
-                                </li>
-
-                                <li class="lvl1"><a href=@Url.Action("CollectionPage","Page")><b>MUA NGAY!</b> <i class="anm anm-angle-down-l"></i></a></li>
-                                <li class="lvl1 parent megamenu">
-                                    <a href=@Url.Action("Index","Shopping") ><b>GIỎ HÀNG</b> <i class="icon anm anm-bag-l"></i></a>
-                                    
-                                </li>
+                                </li>   
+                 
+                                <li class="lvl1"><a href=@Url.Action("Catelogy","Product")><b>MUA NGAY!</b> <i class="anm anm-angle-down-l"></i></a></li>
                             </ul>
                         </nav>
                         <!--End Desktop Menu-->
@@ -241,7 +161,73 @@
                     <!--Mobile Logo-->
                     <div class="col-4 col-sm-3 col-md-3 col-lg-2">
                         <div class="site-cart">
-                            
+                            <a href="#;" class="site-header__cart" title="Cart">
+                                <i class="icon anm anm-bag-l"></i>
+                                <span id="CartCount" class="site-header__cart-count" data-cart-render="item_count">2</span>
+                            </a>
+                            <!--Minicart Popup-->
+                            <div id="header-cart" class="block block-cart">
+                                <ul class="mini-products-list">
+                                    <li class="item">
+                                        <a class="product-image" href="#">
+                                            <img src="~/Content/AssetsClient/images/product-images/cape-dress-1.jpg" alt="3/4 Sleeve Kimono Dress" title="" />
+                                        </a>
+                                        <div class="product-details">
+                                            <a href="#" class="remove"><i class="anm anm-times-l" aria-hidden="true"></i></a>
+                                            <a href="#" class="edit-i remove"><i class="anm anm-edit" aria-hidden="true"></i></a>
+                                            <a class="pName" href="cart.html">Sleeve Kimono Dress</a>
+                                            <div class="variant-cart">Black / XL</div>
+                                            <div class="wrapQtyBtn">
+                                                <div class="qtyField">
+                                                    <span class="label">Qty:</span>
+                                                    <a class="qtyBtn minus" href="javascript:void(0);"><i class="fa anm anm-minus-r" aria-hidden="true"></i></a>
+                                                    <input type="text" id="Quantity" name="quantity" value="1" class="product-form__input qty">
+                                                    <a class="qtyBtn plus" href="javascript:void(0);"><i class="fa anm anm-plus-r" aria-hidden="true"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="priceRow">
+                                                <div class="product-price">
+                                                    <span class="money">$59.00</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="item">
+                                        <a class="product-image" href="#">
+                                            <img src="~/Content/AssetsClient/images/product-images/cape-dress-2.jpg" alt="Elastic Waist Dress - Black / Small" title="" />
+                                        </a>
+                                        <div class="product-details">
+                                            <a href="#" class="remove"><i class="anm anm-times-l" aria-hidden="true"></i></a>
+                                            <a href="#" class="edit-i remove"><i class="anm anm-edit" aria-hidden="true"></i></a>
+                                            <a class="pName" href="cart.html">Elastic Waist Dress</a>
+                                            <div class="variant-cart">Gray / XXL</div>
+                                            <div class="wrapQtyBtn">
+                                                <div class="qtyField">
+                                                    <span class="label">Qty:</span>
+                                                    <a class="qtyBtn minus" href="javascript:void(0);"><i class="fa anm anm-minus-r" aria-hidden="true"></i></a>
+                                                    <input type="text" id="Quantity" name="quantity" value="1" class="product-form__input qty">
+                                                    <a class="qtyBtn plus" href="javascript:void(0);"><i class="fa anm anm-plus-r" aria-hidden="true"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="priceRow">
+                                                <div class="product-price">
+                                                    <span class="money">$99.00</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="total">
+                                    <div class="total-in">
+                                        <span class="label">Cart Subtotal:</span><span class="product-price"><span class="money">$748.00</span></span>
+                                    </div>
+                                    <div class="buttonSet text-center">
+                                        <a href=@Url.Action("Index","Shopping") class="btn btn-secondary btn--small">View Cart</a>
+                                        <a href=@Url.Action("CheckOut","Shopping") class="btn btn-secondary btn--small">Checkout</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--EndMinicart Popup-->
                         </div>
                         <div class="site-header__search">
                             <button type="button" class="search-trigger"><i class="icon anm anm-search-l"></i></button>
@@ -316,7 +302,7 @@
                             <ul>
                                 <li><a href="shop-left-sidebar.html" class="site-nav">Left Sidebar</a></li>
                                 <li><a href="shop-right-sidebar.html" class="site-nav">Right Sidebar</a></li>
-                                <li><a href="shop-fullwidth.html" class="site-nav">Fullwidth</a></li>
+                                <li><a href="@Url.Action("Catelogy","Product")" class="site-nav">Fullwidth</a></li>
                                 <li><a href="shop-grid-3.html" class="site-nav">3 items per row</a></li>
                                 <li><a href="shop-grid-4.html" class="site-nav">4 items per row</a></li>
                                 <li><a href="shop-grid-5.html" class="site-nav">5 items per row</a></li>
@@ -325,20 +311,7 @@
                                 <li><a href="shop-listview.html" class="site-nav last">Product Listview</a></li>
                             </ul>
                         </li>
-                        <li>
-                            <a href="#" class="site-nav">Shop Features<i class="anm anm-plus-l"></i></a>
-                            <ul>
-                                <li><a href="shop-left-sidebar.html" class="site-nav">Product Countdown </a></li>
-                                <li><a href="shop-right-sidebar.html" class="site-nav">Infinite Scrolling</a></li>
-                                <li><a href="shop-grid-3.html" class="site-nav">Pagination - Classic</a></li>
-                                <li><a href="shop-grid-6.html" class="site-nav">Pagination - Load More</a></li>
-                                <li><a href="product-labels.html" class="site-nav">Dynamic Product Labels</a></li>
-                                <li><a href="product-swatches-style.html" class="site-nav">Product Swatches </a></li>
-                                <li><a href="product-hover-info.html" class="site-nav">Product Hover Info</a></li>
-                                <li><a href="shop-grid-3.html" class="site-nav">Product Reviews</a></li>
-                                <li><a href="shop-left-sidebar.html" class="site-nav last">Discount Label </a></li>
-                            </ul>
-                        </li>
+                            
                     </ul>
                 </li>
                 <li class="lvl1 parent megamenu">
@@ -423,61 +396,10 @@
                         <li><a href="coming-soon.html" class="site-nav">Coming soon<span class="lbl nm_label1">New</span></a></li>
                     </ul>
                 </li>
-
-                <li class="lvl1 parent megamenu">
-                    <a href="index.html">Home <i class="anm anm-plus-l"></i></a>
-                    <ul>
-                        <li>
-                            <a href="#" class="site-nav">Home Group 1<i class="anm anm-plus-l"></i></a>
-                            <ul>
-                                <li><a href="index.html" class="site-nav">Home 1 - Classic</a></li>
-                                <li><a href="home2-default.html" class="site-nav">Home 2 - Default</a></li>
-                                <li><a href="home15-funiture.html" class="site-nav">Home 15 - Furniture </a></li>
-                                <li><a href="home3-boxed.html" class="site-nav">Home 3 - Boxed</a></li>
-                                <li><a href="home4-fullwidth.html" class="site-nav">Home 4 - Fullwidth</a></li>
-                                <li><a href="home5-cosmetic.html" class="site-nav">Home 5 - Cosmetic</a></li>
-                                <li><a href="home6-modern.html" class="site-nav">Home 6 - Modern</a></li>
-                                <li><a href="home7-shoes.html" class="site-nav last">Home 7 - Shoes</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#" class="site-nav">Home Group 2<i class="anm anm-plus-l"></i></a>
-                            <ul>
-                                <li><a href="home8-jewellery.html" class="site-nav">Home 8 - Jewellery</a></li>
-                                <li><a href="home9-parallax.html" class="site-nav">Home 9 - Parallax</a></li>
-                                <li><a href="home10-minimal.html" class="site-nav">Home 10 - Minimal</a></li>
-                                <li><a href="home11-grid.html" class="site-nav">Home 11 - Grid</a></li>
-                                <li><a href="home12-category.html" class="site-nav">Home 12 - Category</a></li>
-                                <li><a href="home13-auto-parts.html" class="site-nav">Home 13 - Auto Parts</a></li>
-                                <li><a href="home14-bags.html" class="site-nav last">Home 14 - Bags</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#" class="site-nav">New Sections<i class="anm anm-plus-l"></i></a>
-                            <ul>
-                                <li><a href="home11-grid.html" class="site-nav">Image Gallery</a></li>
-                                <li><a href="home5-cosmetic.html" class="site-nav">Featured Product</a></li>
-                                <li><a href="home7-shoes.html" class="site-nav">Columns with Items</a></li>
-                                <li><a href="home6-modern.html" class="site-nav">Text columns with images</a></li>
-                                <li><a href="home2-default.html" class="site-nav">Products Carousel</a></li>
-                                <li><a href="home9-parallax.html" class="site-nav last">Parallax Banner</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#" class="site-nav">New Features<i class="anm anm-plus-l"></i></a>
-                            <ul>
-                                <li><a href="home13-auto-parts.html" class="site-nav">Top Information Bar </a></li>
-                                <li><a href="#" class="site-nav">Age Varification </a></li>
-                                <li><a href="#" class="site-nav">Footer Blocks</a></li>
-                                <li><a href="#" class="site-nav">2 New Megamenu style</a></li>
-                                <li><a href="#" class="site-nav">Show Total Savings </a></li>
-                                <li><a href="#" class="site-nav">New Custom Icons</a></li>
-                                <li><a href="#" class="site-nav last">Auto Currency</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
                 
+                <li class="lvl1">
+                    <a href=@Url.Action("CollectionPage","Page")><b>Buy Now!</b></a>
+                </li>
             </ul>
         </div>
         <!--End Mobile Menu-->
@@ -710,8 +632,6 @@
         <script src="~/Content/AssetsClient/js/popper.min.js"></script>
         <script src="~/Content/AssetsClient/js/lazysizes.js"></script>
         <script src="~/Content/AssetsClient/js/main.js"></script>
-        <script src="~/Scripts/jquery.validate.min.js"></script>
-        <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
         <!--For Newsletter Popup-->
         <script>jQuery(document).ready(function(){
 		  jQuery('.closepopup').on('click', function () {

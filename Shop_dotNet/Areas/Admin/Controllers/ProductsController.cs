@@ -8,6 +8,8 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
+using PagedList;
 using Shop_dotNet.Models;
 using static System.Net.WebRequestMethods;
 
@@ -19,15 +21,33 @@ namespace Shop_dotNet.Areas.Admin.Controllers
         private ShopEntities db = new ShopEntities();
 
         // GET: Admin/products
-        public ActionResult Index()
+        public ActionResult Index(int? page,string q)
         {
-            var products = db.products.Include(p => p.category);
-            return View(products.ToList());
+           
+            if (page == null) page = 1;
+
+            // 3. Tạo truy vấn, lưu ý phải sắp xếp theo trường nào đó, ví dụ OrderBy
+            // theo LinkID mới có thể phân trang.
+          
+            var products = db.products.Include(p => p.category).OrderBy(p=>p.id);
+            // 4. Tạo kích thước trang (pageSize) hay là số Link hiển thị trên 1 trang
+            int pageSize = 5;
+            if (q != null)
+                products = (IOrderedQueryable<product>)products.Where(c => c.name.Contains(q));
+            // 4.1 Toán tử ?? trong C# mô tả nếu page khác null thì lấy giá trị page, còn
+            // nếu page = null thì lấy giá trị 1 cho biến pageNumber.
+            int pageNumber = (page ?? 1);
+
+            // 5. Trả về các Link được phân trang theo kích thước và số trang.
+            return View(products.ToPagedList(pageNumber, pageSize));
+            
         }
 
         // GET: Admin/products/Details/5
+        
         public ActionResult Details(int? id)
         {
+            
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -147,11 +167,14 @@ namespace Shop_dotNet.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+           
             product product = db.products.Find(id);
             if (product == null)
             {
                 return HttpNotFound();
             }
+           //return Content("<script language='javascript' type='text/javascript'>alert('ABC');</script>");
+
             return View(product);
         }
 
@@ -161,7 +184,10 @@ namespace Shop_dotNet.Areas.Admin.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             product product = db.products.Find(id);
-
+            if (db.detail_orders.Any(d => d.product_id == id)){
+                ViewBag.ErrorMessage = "Khong the xoa!!";
+                return View(product);
+            }
             if (product.img != null) { 
               
             string pathRemove = Path.Combine(Server.MapPath("~/Areas/Admin/Assets/products"), product.img);
