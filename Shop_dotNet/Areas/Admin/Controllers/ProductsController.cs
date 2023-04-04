@@ -167,11 +167,14 @@ namespace Shop_dotNet.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+           
             product product = db.products.Find(id);
             if (product == null)
             {
                 return HttpNotFound();
             }
+           //return Content("<script language='javascript' type='text/javascript'>alert('ABC');</script>");
+
             return View(product);
         }
 
@@ -181,7 +184,10 @@ namespace Shop_dotNet.Areas.Admin.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             product product = db.products.Find(id);
-
+            if (db.detail_orders.Any(d => d.product_id == id)){
+                ViewBag.ErrorMessage = "Khong the xoa!!";
+                return View(product);
+            }
             if (product.img != null) { 
               
             string pathRemove = Path.Combine(Server.MapPath("~/Areas/Admin/Assets/products"), product.img);

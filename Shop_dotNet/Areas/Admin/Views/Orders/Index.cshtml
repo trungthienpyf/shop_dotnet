@@ -14,7 +14,7 @@
 
     <div class="card">
         <div class="card-body">
-            @using (Html.BeginForm())
+            @using (Html.BeginForm("Index","Orders",FormMethod.Get))
             {
                 <div class="row">
 
@@ -23,7 +23,12 @@
                             <input type="text" class="form-control" name="q" placeholder="Search">
                         </div>
                     </div>
-
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="input-group">
+                            <input type="date" class="form-control" name="date" value=@(!string.IsNullOrEmpty(ViewBag.date) !=null ? ViewBag.date :  "")>
+                         
+                        </div>
+                    </div>
                     <div class="col-lg-2 col-md-4 col-sm-6">
                         <button type="submit" class="btn btn-primary btn-block" title="">Search</button>
                     </div>
@@ -48,6 +53,7 @@
                         <th>Tên người nhận</th>
                         <th>Số điện thoại người nhận</th>
                         <th>Địa chỉ người nhận</th>
+                        <th>Thời gian đặt</th>
                         <th>Ghi chú</th>
                         <th>Giá tiền</th>
                         <th>Trạng thái</th>
@@ -65,6 +71,7 @@
                             <td><span>@item.name_receive</span></td>
                             <td><span>@item.phone_receive</span></td>
                             <td><span>@item.address_receive</span></td>
+                            <td><span>@item.time</span></td>
 
                             <td><div style=" overflow: hidden; inline-size: 150px;">@item.note</div></td>
                             <td>@item.total_price</td>

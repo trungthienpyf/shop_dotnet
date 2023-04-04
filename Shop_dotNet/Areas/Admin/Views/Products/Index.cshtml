@@ -16,7 +16,7 @@
     </p>
     <div class="card">
         <div class="card-body">
-            @using (Html.BeginForm())
+            @using (Html.BeginForm("Index","Products",FormMethod.Post))
             {
                 <div class="row">
 
@@ -25,11 +25,11 @@
                             <input type="text" class="form-control" name="q" placeholder="Search">
                         </div>
                     </div>
-
+                   
                     <div class="col-lg-2 col-md-4 col-sm-6">
                         <button type="submit" class="btn btn-primary btn-block" title="">Search</button>
                     </div>
-                    
+
                 </div>
             }
             </div>
