@@ -137,9 +137,11 @@
     <Compile Include="Controllers\PageController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ShoppingController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\category.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -167,6 +169,7 @@
     <Compile Include="Models\order.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\OrderViewModel.cs" />
     <Compile Include="Models\product.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -790,6 +793,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\cartController.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
@@ -824,11 +828,15 @@
     <Content Include="Views\Page\Service.cshtml" />
     <Content Include="Views\Product\Catelogy.cshtml" />
     <Content Include="Views\Shopping\CheckOut.cshtml" />
+    <Content Include="Views\Shopping\Index.cshtml" />
+    <Content Include="Views\Shopping\Partial_CheckOut.cshtml" />
+    <Content Include="Views\Shopping\Xacnhandonhang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Assets\products\" />
     <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Views\cart\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
