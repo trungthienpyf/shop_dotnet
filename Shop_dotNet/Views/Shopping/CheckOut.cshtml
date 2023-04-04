@@ -11,113 +11,124 @@
 <!--Body Content-->
 <div id="page-content">
     <!--Page Title-->
-    <div class="page section-header text-center">
-        <div class="page-title">
-            <div class="wrapper"><h1 class="page-width">Checkout</h1></div>
-        </div>
-    </div>
-    <!--End Page Title-->
-
-    <div class="container">
-
-
-        <div class="row billing-fields">
-            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 sm-margin-30px-bottom">
-                <div class="create-ac-content bg-light-gray padding-20px-all">
-                    @using (Html.BeginForm())
-                    {
-                        @Html.AntiForgeryToken()
-                        <h2 class="text-center">Thông tin khách hàng</h2>
-                        <div class="form-group">
-                            <label>Họ tên khách hàng</label>
-                            <input type="text" name="name_receive" required class="form-control" autocomplete="off" value="@user.name" />
-                        </div>
-                        <div class="form-group">
-                            <label>Số điện thoại</label>
-                            <input type="text" name="phone_receive" class="form-control" autocomplete="off" value="@user.phone"/>
-                        </div>
-                        <div class="form-group">
-                            <label>Địa chỉ</label>
-                            <input type="text" name="address_receive" class="form-control" autocomplete="off" value="" />
-                        </div>
-                        <div class="form-group">
-                            <label>Email</label>
-                            <input type="text" name="Email" class="form-control" autocomplete="off" value="@user.email"/>
-                        </div>
-                        <div class="form-group">
-                            <label>Note</label>
-                            <input type="text" name="Note" class="form-control" autocomplete="off" />
-                        </div>
-                        <div class="form-group">
-                            <label>Hình thức thanh toán</label>
-                            <select class="form-control" name="PayMent">
-                                <option value="1" selected>COD</option>
-                                <option value="2" selected>Chuyển khoản</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-block btn-success">Đặt hàng</button>
-                        </div>
-                    }
-                </div>
+    <div id="MainContent" class="main-content" role="main">
+        <div class="bredcrumbWrap">
+            <div class="container breadcrumbs">
+                <a href="index.html" title="Back to the home page"></a><span></span>
             </div>
+        </div>
+        <div class="page section-header text-center">
+            <div class="page-title">
+                <div class="wrapper"><h1 class="page-width">Thanh toán</h1></div>
+            </div>
+        </div>
+        <!--End Page Title-->
 
-            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                <div class="your-order-payment">
-                    <div class="your-order">
-                        <h2 class="order-title mb-4">Your Order</h2>
+        <div class="container">
 
-                        <div class="table-responsive-sm order-table">
-                            <table class="bg-white table table-bordered table-hover text-center">
-                                <thead>
-                                    <tr>
-                                        <th class="text-left">Product Name</th>
-                                        <th>Price</th>
-                                        <th>Qty</th>
-                                        <th>Subtotal</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach (CartItem item in (List<CartItem>)Session["cart"])
-                                    {
+
+            <div class="row billing-fields">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 sm-margin-30px-bottom">
+                    <div class="create-ac-content bg-light-gray padding-20px-all">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+                            <h2 class="text-center">Thông tin khách hàng</h2>
+                            <div class="form-group">
+                                <label>Họ tên khách hàng</label>
+                                <input type="text" name="name_receive" required class="form-control" autocomplete="off" value="@user.name" />
+                            </div>
+                            <div class="form-group">
+                                <label>Số điện thoại</label>
+                                <input type="text" name="phone_receive" class="form-control" autocomplete="off" value="@user.phone" />
+                            </div>
+                            <div class="form-group">
+                                <label>Địa chỉ</label>
+                                <input type="text" name="address_receive" class="form-control" autocomplete="off" value="" />
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="text" name="Email" class="form-control" autocomplete="off" value="@user.email" />
+                            </div>
+                            <div class="form-group">
+                                <label>Note</label>
+                                <input type="text" name="Note" class="form-control" autocomplete="off" />
+                            </div>
+                            <div class="form-group">
+                                <label>Hình thức thanh toán</label>
+                                <select class="form-control" name="PayMent">
+                                    <option value="1" selected>COD</option>
+                                    <option value="2" selected>Chuyển khoản</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-block btn-success">Đặt hàng</button>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                    <div class="your-order-payment">
+                        <div class="your-order">
+                            <h2 class="order-title mb-4">Giỏ hàng của bạn</h2>
+
+                            <div class="table-responsive-sm order-table">
+                                <table class="bg-white table table-bordered table-hover text-center">
+                                    <thead>
                                         <tr>
-                                            <td class="text-left">
-                                                @item.product.name
-                                            </td>
-
-                                            <td>
-                                                @item.product.price
-                                            </td>
-
-                                            <td>
-                                                @item.Quantity
-                                            </td>
-                                            <td>
-                                                <div><span class="money">   @(item.product.price * item.Quantity) VNĐ</span></div>
-                                            </td>
-                                            
+                                            <th class="text-left">Tên sản phẩm</th>
+                                            <th>Giá tiền</th>
+                                            <th>Số lượng</th>
+                                            <th>Thành tiền</th>
                                         </tr>
-                                        tong += (int)(item.product.price * item.Quantity);
-                                    }
-                                    
-                                </tbody>
-                                <tfoot class="font-weight-600">
-                                    <tr>
-                                        <td colspan="3" class="text-right">Shipping </td>
-                                        <td>Free Ship</td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="3" class="text-right">Total</td>
-                                        <td>@tong VNĐ</td>
-                                    </tr>
-                                </tfoot>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (CartItem item in (List<CartItem>)Session["cart"])
+                                        {
+                                            <tr>
+                                                <td class="text-left">
+                                                    @item.product.name
+                                                </td>
+
+                                                <td>
+                                                    @(double.Parse(@item.product.price + "").ToString("#,###", System.Globalization.CultureInfo.GetCultureInfo("vi-VN")) ) VND
+                                                </td>
+
+                                                <td>
+                                                    @item.Quantity
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                        <span class="money"> @(double.Parse((item.product.price * item.Quantity) + "").ToString("#,###", System.Globalization.CultureInfo.GetCultureInfo("vi-VN")) ) VND   </span>
+                                                    </div>
+                                                </td>
+
+                                            </tr>
+                                            tong += (int)(item.product.price * item.Quantity);
+                                        }
+
+                                    </tbody>
+                                    <tfoot class="font-weight-600">
+                                        <tr>
+                                            <td colspan="3" class="text-right">Shipping </td>
+                                            <td>Free Ship</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3" class="text-right">Total</td>
+                                            <td>@(double.Parse(@tong + "").ToString("#,###", System.Globalization.CultureInfo.GetCultureInfo("vi-VN")) ) VND</td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
                         </div>
-                    </div>                    
+                    </div>
                 </div>
             </div>
         </div>
+
     </div>
+    
 
 </div>
 

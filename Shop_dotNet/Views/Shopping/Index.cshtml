@@ -10,9 +10,14 @@
 <!--Body Content-->
 <div id="page-content">
     <!--Page Title-->
+    <div class="bredcrumbWrap">
+        <div class="container breadcrumbs">
+            <a href="index.html" title="Back to the home page"></a><span></span>
+        </div>
+    </div>
     <div class="page section-header text-center">
         <div class="page-title">
-            <div class="wrapper"><h1 class="page-width">Your cart</h1></div>
+            <div class="wrapper"><h1 class="page-width">Giỏ hàng</h1></div>
         </div>
     </div>
     <!--End Page Title-->
@@ -33,13 +38,13 @@
                             </tr>
                         </thead>
                         <tbody>
-                            
+
                             @foreach (CartItem item in (List<CartItem>)Session["cart"])
-                             {
+                            {
                                 <tr>
                                     <td>
 
-                                        <img src="/Areas/Admin/Assets/products/@item.product.img"  class="text-center" style="width:80px">
+                                        <img src="/Areas/Admin/Assets/products/@item.product.img" class="text-center" style="width:80px">
                                     </td>
                                     <td class="cart__meta small--text-center cart-flex-item">
                                         <div class="list-view-item__title">
@@ -47,64 +52,64 @@
                                         </div>
                                     </td>
                                     <td class="cart__price-wrapper cart-flex-item">
-                                        <span class="money">@item.product.price VNĐ</span>
+                                        <span class="money">@(double.Parse(@item.product.price   + "").ToString("#,###", System.Globalization.CultureInfo.GetCultureInfo("vi-VN")) ) VND</span>
                                     </td>
                                     <td class="cart__update-wrapper cart-flex-item text-right">
                                         <div class="cart__qty text-center">
-                                                @using (Html.BeginForm("UpdateSL", "Cart"))
-                                                {
-                                                    <div class="qtyField">
-                                                        <a class="qtyBtn minus" href="/Shopping/UpdateSL?type=0&id=@item.product.id"><i class="icon icon-minus"></i></a>
-                                                        <input class="cart__qty-input qty" type="text" name="updates[]" id="qty" value=@item.Quantity pattern="[0-9]*">
-                                                        <a class="qtyBtn plus" href="/Shopping/UpdateSL?type=1&id=@item.product.id"><i class="icon icon-plus"></i></a>
+                                            @using (Html.BeginForm("UpdateSL", "Cart"))
+                                            {
+                                                <div class="qtyField">
+                                                    <a class="qtyBtn minus" href="/Shopping/UpdateSL?type=0&id=@item.product.id"><i class="icon icon-minus"></i></a>
+                                                    <input class="cart__qty-input qty" type="text" name="updates[]" id="qty" value=@item.Quantity pattern="[0-9]*">
+                                                    <a class="qtyBtn plus" href="/Shopping/UpdateSL?type=1&id=@item.product.id"><i class="icon icon-plus"></i></a>
 
-                                                    </div>
-                                                }
-                                            </div>
+                                                </div>
+                                            }
+                                        </div>
                                     </td>
                                     <td class="text-center small--hide cart-price">
-                                        <div><span class="money">   @(item.product.price * item.Quantity) VNĐ</span></div>
+                                        <div><span class="money">@(double.Parse((item.product.price * item.Quantity) + "").ToString("#,###", System.Globalization.CultureInfo.GetCultureInfo("vi-VN")) ) VND   </span></div>
                                     </td>
 
                                     <td class="text-center">
                                         @Html.ActionLink("Xóa", "Remove", new { id = item.product.id })
                                     </td>
                                 </tr>
-                                tong+=(int)(item.product.price * item.Quantity);
+                                tong += (int)(item.product.price * item.Quantity);
                             }
-                            </tbody>
-                            <tfoot>
-                                <tr>
-                                    <td colspan="3" class="text-left"><a href=@Url.Action("Index","Home") class="btn--link cart-continue"><i class="icon icon-arrow-circle-left"></i> Continue shopping</a></td>
-                                    
-                                </tr>
-                            </tfoot>
-                        </table>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="3" class="text-left"><a href=@Url.Action("Index","Home") class="btn--link cart-continue"><i class="icon icon-arrow-circle-left"></i> Tiếp tục mua hàng</a></td>
+
+                            </tr>
+                        </tfoot>
+                    </table>
 
 
-                    </form>
-                </div>
-                <div class="col-12 col-sm-12 col-md-4 col-lg-4 cart__footer">
-                    <div class="cart-note">
-                        <div class="solid-border">
-                            <h5><label for="CartSpecialInstructions" class="cart-note__label small--text-center">Add a note to your order</label></h5>
-                            <textarea name="note" id="CartSpecialInstructions" class="cart-note__input"></textarea>
-                        </div>
-                    </div>
+                </form>
+            </div>
+            <div class="col-12 col-sm-12 col-md-4 col-lg-4 cart__footer">
+                <div class="cart-note">
                     <div class="solid-border">
-                        <div class="row">
-                            <span class="col-12 col-sm-6 cart__subtotal-title"><strong>Tổng tiền</strong></span>
-                            <span class="col-12 col-sm-6 cart__subtotal-title cart__subtotal text-right"><span class="money">@tong VNĐ</span></span>
-                        </div>
-                        
-                        
-                        <a href=@Url.Action("CheckOut","Shopping") type="submit" name="checkout" id="cartCheckout" class="btn btn--small-wide checkout" value="Thanh toán" >Thanh toán</a>
-                        <div class="paymnet-img"><img src="~/Content/AssetsClient/images/payment-img.jpg" alt="Payment"></div>
+                        <h5><label for="CartSpecialInstructions" class="cart-note__label small--text-center">Add a note to your order</label></h5>
+                        <textarea name="note" id="CartSpecialInstructions" class="cart-note__input"></textarea>
+                    </div>
+                </div>
+                <div class="solid-border">
+                    <div class="row">
+                        <span class="col-12 col-sm-6 cart__subtotal-title"><strong>Thành tiền</strong></span>
+                        <span class="col-12 col-sm-6 cart__subtotal-title cart__subtotal text-right"><span class="money">@(double.Parse(@tong + "").ToString("#,###", System.Globalization.CultureInfo.GetCultureInfo("vi-VN")) ) VND</span></span>
                     </div>
 
+
+                    <a href=@Url.Action("CheckOut","Shopping") type="submit" name="checkout" id="cartCheckout" class="btn btn--small-wide checkout" value="Đặt hàng">Đặt hàng</a>
+                    <div class="paymnet-img"><img src="~/Content/AssetsClient/images/payment-img.jpg" alt="Payment"></div>
                 </div>
+
             </div>
         </div>
-
     </div>
+
+</div>
     <!--End Body Content-->
