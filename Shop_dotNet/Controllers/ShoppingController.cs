@@ -185,18 +185,7 @@ namespace Shop_dotNet.Controllers
             return RedirectToAction("Xacnhandonhang", "Giohang");
 
         }*/
-        public void EmptyCart()
-        {
-            var cartItems = db.CartItems.Where(
-                cart => cart.CartId == ShoppingCartId);
-
-            foreach (var cartItem in cartItems)
-            {
-                db.CartItems.Remove(cartItem);
-            }
-            // Save changes
-            db.SaveChanges();
-        }
+        
         
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -204,15 +193,13 @@ namespace Shop_dotNet.Controllers
         {
             int orderTotal = 0;
             List<CartItem> dsGiohang = (List < CartItem >) Session["Cart"] ;
-            // Iterate over the items in the cart, 
-            // adding the order details for each
             var addOrder = new order()
             {
                 name_receive = order.name_receive,
                 phone_receive = order.phone_receive,
                 address_receive = order.address_receive,
-                note = order.Note
-               
+                note = order.Note,
+                
             };
             db.orders.Add(addOrder);
             db.SaveChanges();
@@ -220,13 +207,10 @@ namespace Shop_dotNet.Controllers
             {
                 var orderDetail = new detail_orders
                 {
-
-                    product_id = item.id,
-                    orders_id = addOrder.id,
-                    
+                    product_id = item.product.id,
+                    orders_id = addOrder.id,                   
                     quantity = item.Quantity.ToString()
                 };
-                // Set the order total of the shopping cart
                 orderTotal += (int)(item.Quantity * item.product.price);
 
                 db.detail_orders.Add(orderDetail);
