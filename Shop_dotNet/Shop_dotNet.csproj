@@ -138,9 +138,11 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoriesController.cs" />
     <Compile Include="Areas\Admin\Controllers\CustomersController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DashBoardController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Areas\Admin\Controllers\OrdersController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductsController.cs" />
+    <Compile Include="Areas\Admin\Views\DashBoardController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\PageController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -811,11 +813,7 @@
     <Content Include="Models\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
-    <Content Include=".vs\Shop_dotNet\FileContentIndex\36afd61f-ca2e-4fa1-bf15-351468504893.vsidx" />
-    <Content Include=".vs\Shop_dotNet\FileContentIndex\read.lock" />
-    <Content Include=".vs\Shop_dotNet\v17\workspaceFileList.bin" />
-    <Content Include=".vs\slnx.sqlite" />
-    <Content Include=".vs\VSWorkspaceState.json" />
+    <Content Include="Areas\Admin\Views\DashBoard\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -854,7 +852,6 @@
     <Content Include="Views\Shopping\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include=".vs\Shop_dotNet\FileContentIndex\merges\" />
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Assets\products\" />
     <Folder Include="Areas\Admin\Data\" />

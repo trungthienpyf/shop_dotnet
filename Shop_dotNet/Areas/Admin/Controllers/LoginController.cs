@@ -18,7 +18,7 @@ namespace Shop_dotNet.Areas.Admin.Controllers
         {
             if (Session["AdminID"] != null)
             {
-                return RedirectToAction("Index", "Products");
+                return RedirectToAction("Index", "DashBoard");
             }
             return View();
         }

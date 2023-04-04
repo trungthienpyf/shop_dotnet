@@ -6,54 +6,56 @@
 }
 
 <div class="col-12">
-                <h2>Thể loại</h2>
+    <h2>Thể loại</h2>
 
-                <p>
-                    @Html.ActionLink("Thêm thể loại", "Create")
-                </p>
-             
-            </div>
-            <div class="col-12">
-                <div class="card">
-                    <div class="table-responsive">
-                        <table class="table table-hover table-striped table-vcenter mb-0 text-nowrap">
-                            <thead>
-                                <tr>
-                                    <th colspan="5">Thể loại quần áo</th>
-                                    <th colspan="3">Hành động</th>
-                                </tr>
-                                <tr>
-    
-                                    <th>Id</th>
-                                    <th>Tên thể loại</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th>Hành động</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var item in Model) {
-                            <tr>
-                             
+    <p>
+        @Html.ActionLink("Thêm thể loại", "Create")
+    </p>
 
-                                <td><a href="#">#@item.id</a></td>
-                                <td><span>@item.name</span></td>
-                                <td><span ></span></td>
-                                <td><span></span></td>
-                                <td><span></span></td>
-                                <td>
-                                    <div> @Html.ActionLink("Edit", "Edit", new { id = item.id }) </div>
+</div>
+<div class="col-12">
+    <div class="card">
+        <div class="table-responsive">
+            <table class="table table-hover table-striped table-vcenter mb-0 text-nowrap">
+               
+                <thead>
+                    <tr>
+                        <th colspan="5">Thể loại quần áo</th>
+                        <th colspan="3">Hành động</th>
+                    </tr>
+                    <tr>
 
-                                    <div>  @Html.ActionLink("Delete", "Delete", new { id = item.id })</div>
-                                </td>
-                                <td></td>
-                            </tr>
-                                }
-                               
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
+                        <th>Id</th>
+                        <th>Tên thể loại</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th>Hành động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+
+
+                            <td><a href="#">#@item.id</a></td>
+                            <td><span>@item.name</span></td>
+                            <td><span></span></td>
+                            <td><span></span></td>
+                            <td><span></span></td>
+                            <td>
+                                <div> @Html.ActionLink("Edit", "Edit", new { id = item.id }) </div>
+
+                                <div>  @Html.ActionLink("Delete", "Delete", new { id = item.id })</div>
+                            </td>
+                            <td></td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 
