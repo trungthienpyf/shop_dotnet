@@ -16,7 +16,7 @@ namespace Shop_dotNet.Models
     public partial class ShopEntities : DbContext
     {
         public ShopEntities()
-            : base("name=ShopEntities1")
+            : base("name=ShopEntities4")
         {
         }
     
@@ -30,5 +30,6 @@ namespace Shop_dotNet.Models
         public virtual DbSet<detail_orders> detail_orders { get; set; }
         public virtual DbSet<order> orders { get; set; }
         public virtual DbSet<product> products { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     }
 }

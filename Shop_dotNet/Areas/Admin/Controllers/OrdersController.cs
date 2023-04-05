@@ -9,6 +9,8 @@ using System.Web.Mvc;
 using PagedList;
 using System.Web.UI;
 using Shop_dotNet.Models;
+using System.Data.Entity.Core.Objects;
+using System.Globalization;
 
 namespace Shop_dotNet.Areas.Admin.Controllers
 {
@@ -18,7 +20,8 @@ namespace Shop_dotNet.Areas.Admin.Controllers
         private ShopEntities db = new ShopEntities();
 
         // GET: Admin/Orders
-        public ActionResult Index(int? page,string q)
+        [Obsolete]
+        public ActionResult Index(int? page,string q,DateTime? date)
         {
             if (page == null) page = 1;
 
@@ -33,6 +36,11 @@ namespace Shop_dotNet.Areas.Admin.Controllers
                 orders = (IOrderedQueryable<order>)orders.Where(c => c.name_receive.Contains(q));
             // 4.1 Toán tử ?? trong C# mô tả nếu page khác null thì lấy giá trị page, còn
             // nếu page = null thì lấy giá trị 1 cho biến pageNumber.
+            if (date != null)
+            {
+                orders = (IOrderedQueryable<order>)orders.Where(c => EntityFunctions.TruncateTime(c.time) == date);
+                ViewBag.date = date.Value.ToString("yyyy-MM-dd");
+            }
             int pageNumber = (page ?? 1);
 
             // 5. Trả về các Link được phân trang theo kích thước và số trang.

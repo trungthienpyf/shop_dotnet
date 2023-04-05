@@ -3,6 +3,12 @@
 @{
     ViewBag.Title = "Delete";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+} 
+@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+{
+    <script>
+            alert('@ViewBag.ErrorMessage');
+    </script>
 }
 <div class="col-12">
     <h2>Delete</h2>

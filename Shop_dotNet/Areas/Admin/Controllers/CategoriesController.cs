@@ -111,6 +111,11 @@ namespace Shop_dotNet.Areas.Admin.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             category category = db.categories.Find(id);
+
+            if (db.products.Any(d => d.category_id == id)){
+                ViewBag.ErrorMessage = "Khong the xoa!!";
+                return View(category);
+            }
             db.categories.Remove(category);
             db.SaveChanges();
             return RedirectToAction("Index");
