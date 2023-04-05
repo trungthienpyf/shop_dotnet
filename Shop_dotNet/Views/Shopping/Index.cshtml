@@ -33,6 +33,7 @@
                                 <th class="text-md-left">Tên sản phẩm</th>
                                 <th class="text-left">Giá Tiền</th>
                                 <th class="text-center">Số lượng</th>
+                                <th class="text-center">Size</th>
                                 <th class="text-center">Thành tiền</th>
                                 <th class="text-center">&nbsp;</th>
                             </tr>
@@ -59,13 +60,16 @@
                                             @using (Html.BeginForm("UpdateSL", "Cart"))
                                             {
                                                 <div class="qtyField">
-                                                    <a class="qtyBtn minus" href="/Shopping/UpdateSL?type=0&id=@item.product.id"><i class="icon icon-minus"></i></a>
+                                                    <a class="qtyBtn minus" href="/Shopping/UpdateSL?type=0&id=@item.product.id&size=@item.size"><i class="icon icon-minus"></i></a>
                                                     <input class="cart__qty-input qty" type="text" name="updates[]" id="qty" value=@item.Quantity pattern="[0-9]*">
-                                                    <a class="qtyBtn plus" href="/Shopping/UpdateSL?type=1&id=@item.product.id"><i class="icon icon-plus"></i></a>
+                                                    <a class="qtyBtn plus" href="/Shopping/UpdateSL?type=1&id=@item.product.id&size=@item.size"><i class="icon icon-plus"></i></a>
 
                                                 </div>
                                             }
                                         </div>
+                                    </td>
+                                    <td class="cart__price-wrapper cart-flex-item">
+                                        <span class="money">@item.size</span>
                                     </td>
                                     <td class="text-center small--hide cart-price">
                                         <div><span class="money">@(double.Parse((item.product.price * item.Quantity) + "").ToString("#,###", System.Globalization.CultureInfo.GetCultureInfo("vi-VN")) ) VND   </span></div>

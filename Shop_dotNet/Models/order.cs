@@ -29,6 +29,7 @@ namespace Shop_dotNet.Models
         public Nullable<int> status { get; set; }
         public Nullable<double> total_price { get; set; }
         public Nullable<int> customer_id { get; set; }
+        public string type_payment { get; set; }
     
         public virtual customer customer { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

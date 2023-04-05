@@ -30,11 +30,12 @@
           <Key>
             <PropertyRef Name="orders_id" />
             <PropertyRef Name="product_id" />
+            <PropertyRef Name="size" />
           </Key>
           <Property Name="orders_id" Type="int" Nullable="false" />
           <Property Name="product_id" Type="int" Nullable="false" />
           <Property Name="quantity" Type="ntext" />
-          <Property Name="size" Type="varchar" MaxLength="50" />
+          <Property Name="size" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="orders">
           <Key>
@@ -49,6 +50,7 @@
           <Property Name="status" Type="int" />
           <Property Name="total_price" Type="float" />
           <Property Name="customer_id" Type="int" />
+          <Property Name="type_payment" Type="nchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="product">
           <Key>
@@ -61,6 +63,16 @@
           <Property Name="price" Type="int" />
           <Property Name="manufacturers_id" Type="int" />
           <Property Name="category_id" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <Association Name="FK_detail_orders_orders">
           <End Role="orders" Type="Self.orders" Multiplicity="1" />
@@ -116,6 +128,7 @@
           <EntitySet Name="detail_orders" EntityType="Self.detail_orders" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="orders" EntityType="Self.orders" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="product" EntityType="Self.product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_detail_orders_orders" Association="Self.FK_detail_orders_orders">
             <End Role="orders" EntitySet="orders" />
             <End Role="detail_orders" EntitySet="detail_orders" />
@@ -165,11 +178,12 @@
           <Key>
             <PropertyRef Name="orders_id" />
             <PropertyRef Name="product_id" />
+            <PropertyRef Name="size" />
           </Key>
           <Property Name="orders_id" Type="Int32" Nullable="false" />
           <Property Name="product_id" Type="Int32" Nullable="false" />
           <Property Name="quantity" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="size" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="size" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="order" Relationship="Self.FK_detail_orders_orders" FromRole="detail_orders" ToRole="orders" />
           <NavigationProperty Name="product" Relationship="Self.FK_detail_orders_product" FromRole="detail_orders" ToRole="product" />
         </EntityType>
@@ -186,6 +200,7 @@
           <Property Name="status" Type="Int32" />
           <Property Name="total_price" Type="Double" />
           <Property Name="customer_id" Type="Int32" />
+          <Property Name="type_payment" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="customer" Relationship="Self.FK_orders_customer" FromRole="orders" ToRole="customer" />
           <NavigationProperty Name="detail_orders" Relationship="Self.FK_detail_orders_orders" FromRole="orders" ToRole="detail_orders" />
         </EntityType>
@@ -202,6 +217,16 @@
           <Property Name="category_id" Type="Int32" />
           <NavigationProperty Name="category" Relationship="Self.FK_product_category" FromRole="product" ToRole="category" />
           <NavigationProperty Name="detail_orders" Relationship="Self.FK_detail_orders_product" FromRole="product" ToRole="detail_orders" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <Association Name="FK_product_category">
           <End Role="category" Type="Self.category" Multiplicity="0..1" />
@@ -251,12 +276,13 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ShopEntities3" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="ShopEntities4" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="categories" EntityType="Self.category" />
           <EntitySet Name="customers" EntityType="Self.customer" />
           <EntitySet Name="detail_orders" EntityType="Self.detail_orders" />
           <EntitySet Name="orders" EntityType="Self.order" />
           <EntitySet Name="products" EntityType="Self.product" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <AssociationSet Name="FK_product_category" Association="Self.FK_product_category">
             <End Role="category" EntitySet="categories" />
             <End Role="product" EntitySet="products" />
@@ -279,7 +305,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ShopModelStoreContainer" CdmEntityContainer="ShopEntities3">
+        <EntityContainerMapping StorageEntityContainer="ShopModelStoreContainer" CdmEntityContainer="ShopEntities4">
           <EntitySetMapping Name="categories">
             <EntityTypeMapping TypeName="ShopModel.category">
               <MappingFragment StoreEntitySet="category">
@@ -325,6 +351,7 @@
                 <ScalarProperty Name="status" ColumnName="status" />
                 <ScalarProperty Name="total_price" ColumnName="total_price" />
                 <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="type_payment" ColumnName="type_payment" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -338,6 +365,17 @@
                 <ScalarProperty Name="price" ColumnName="price" />
                 <ScalarProperty Name="manufacturers_id" ColumnName="manufacturers_id" />
                 <ScalarProperty Name="category_id" ColumnName="category_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="ShopModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
