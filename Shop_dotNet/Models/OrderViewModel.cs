@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Shop_dotNet.Models
 {
-    public class OrderViewModel
+    public class OrderViewModel { 
     [Required(ErrorMessage = "Tên người nhận không được để trống")]
     public string name_receive { get; set; }
     [Required(ErrorMessage = "Số điện thoại không được để trống")]
