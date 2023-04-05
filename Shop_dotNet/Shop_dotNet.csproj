@@ -231,6 +231,7 @@
     <Compile Include="Models\order.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\OrderViewModel.cs" />
     <Compile Include="Models\product.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -907,6 +908,7 @@
     <Content Include="Views\Shopping\Index.cshtml" />
     <Content Include="Views\Shopping\Xacnhandonhang.cshtml" />
     <Content Include="Views\Shopping\Partial_CheckOut.cshtml" />
+    <Content Include="Views\Page\Contact.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
