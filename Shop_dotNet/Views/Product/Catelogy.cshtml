@@ -3,12 +3,13 @@
     ViewBag.Title = "Catelogy";
     Layout = "~/Views/Shared/_LayoutCustom.cshtml";
 }
+<title>Nghiện bóng VCL - Sản Phẩm </title>
 
 <div id="page-content">
     <!--Collection Banner-->
     <div class="collection-header">
         <div class="collection-hero">
-            <div class="collection-hero__image"><img class="blur-up lazyload"  src="//theme.hstatic.net/200000580329/1000937158/14/slide_3_img.jpg?v=85" alt="Women" title="Women" /></div>
+            <div class="collection-hero__image"><img class="blur-up lazyload" src="//theme.hstatic.net/200000580329/1000937158/14/slide_3_img.jpg?v=85" alt="Women" title="Women" /></div>
             <div class="collection-hero__title-wrapper"><h1 class="collection-hero__title page-width"></h1></div>
         </div>
     </div>
@@ -29,10 +30,10 @@
                                 <li class="level1 sub-level">
                                     <a class="site-nav">Áo</a>
 
-                                <ul class="sublinks">
-                                    <li class="level2"><a href="/Product/Catelogy?catelogy=3" class="site-nav">Áo CLB</a></li>
-                                    <li class="level2"><a href="/Product/Catelogy?catelogy=4" class="site-nav">Áo Đội Tuyển</a></li>
-                                </ul>
+                                    <ul class="sublinks">
+                                        <li class="level2"><a href="/Product/Catelogy?catelogy=3" class="site-nav">Áo CLB</a></li>
+                                        <li class="level2"><a href="/Product/Catelogy?catelogy=4" class="site-nav">Áo Đội Tuyển</a></li>
+                                    </ul>
                                 </li>
 
                                 <li class="lvl-1"><a href="/Product/Catelogy?catelogy=5" class="site-nav">Giày</a></li>
@@ -43,7 +44,6 @@
                     <!--Price Filter-->
                     <!--End Price Filter-->
                     <!--Size Swatches-->
-                    
                     <!--End Size Swatches-->
                     <!--Color Swatches-->
                     <!--End Color Swatches-->
@@ -71,7 +71,7 @@
                     <div class="toolbar">
                         <div class="filters-toolbar-wrapper">
                             <div class="row">
-                               
+
                                 <div class="col-4 col-md-4 col-lg-4 text-center filters-toolbar__item filters-toolbar__item--count d-flex justify-content-center align-items-center">
                                     <span class="filters-toolbar__product-count">Hiển thị: @Model.Count() sản phẩm</span>
                                 </div>
@@ -86,7 +86,7 @@
 
                                             </option>
 
-                                            <option value="/Product/Catelogy?sortOrder=" >
+                                            <option value="/Product/Catelogy?sortOrder=">
                                                 Sắp xếp theo tên A->Z
                                             </option>
                                             <option value="/Product/Catelogy?sortOrder=name_desc">
