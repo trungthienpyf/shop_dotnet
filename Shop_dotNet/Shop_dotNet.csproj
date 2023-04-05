@@ -852,6 +852,7 @@
     <Content Include="Views\Product\Catelogy.cshtml" />
     <Content Include="Views\Shopping\CheckOut.cshtml" />
     <Content Include="Views\Shopping\Index.cshtml" />
+    <Content Include="Views\Page\Contact.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include=".vs\Shop_dotNet\FileContentIndex\merges\" />

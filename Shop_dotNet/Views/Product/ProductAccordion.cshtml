@@ -30,7 +30,6 @@ Layout = "~/Views/Shared/_LayoutCustom.cshtml";
 
                                     <img class="blur-up lazyload zoompro" data-zoom-image="/Areas/Admin/Assets/products/@Model.img" alt="" src="/Areas/Admin/Assets/products/@Model.img" />
                                 </div>
-                                <div class="product-labels"><span class="lbl on-sale">Sale</span><span class="lbl pr-label1">new</span></div>
                                 <div class="product-buttons">
                                     <a href="https://www.youtube.com/watch?v=93A2jOW5Mog" class="btn popup-video" title="View Video"><i class="icon anm anm-play-r" aria-hidden="true"></i></a>
                                     <a href="#" class="btn prlightbox" title="Zoom"><i class="icon anm anm-expand-l-arrows" aria-hidden="true"></i></a>
@@ -45,15 +44,17 @@ Layout = "~/Views/Shared/_LayoutCustom.cshtml";
                             <div class="row">
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-6 feature">
                                     <img src="~/Content/AssetsClient/images/credit-card.png" alt="Safe Payment" title="Safe Payment" />
-                                    <div class="details"><h3>Safe Payment</h3>Pay with the world's most payment methods.</div>
+                                    <div class="details"><h3>BẢO MẬT THANH TOÁN</h3>Tất cả các khoản thanh toán đều an toàn và đáng tin cậy.</div>
                                 </div>
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-6 feature">
                                     <img src="~/Content/AssetsClient/images/shield.png" alt="Confidence" title="Confidence" />
-                                    <div class="details"><h3>Confidence</h3>Protection covers your purchase and personal data.</div>
+                                    <div class="details"><h3>SỰ TỰ TIN</h3>Bảo vệ bao gồm mua hàng và dữ liệu cá nhân của bạn.</div>
                                 </div>
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-6 feature">
                                     <img src="~/Content/AssetsClient/images/worldwide.png" alt="Worldwide Delivery" title="Worldwide Delivery" />
-                                    <div class="details"><h3>Worldwide Delivery</h3>FREE &amp; fast shipping to over 200+ countries &amp; regions.</div>
+                                    <div class="details">
+                                        <h3>GIAO HÀNG TRÊN TOÀN THẾ GIỚI</h3>MIỄN PHÍ và vận chuyển nhanh chóng đến hơn 200 quốc gia và khu vực..
+                                    </div>
                                 </div>
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-6 feature">
                                     <img src="~/Content/AssetsClient/images/phone-call.png" alt="Hotline" title="Hotline" />
@@ -71,20 +72,13 @@ Layout = "~/Views/Shared/_LayoutCustom.cshtml";
                             </div>
                             <div class="prInfoRow">
                                 <div class="product-sku">SKU: <span class="variant-sku">19115-rdxs</span></div>
-                                <div class="product-review"><a class="reviewLink" href="#tab2"><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star-o"></i><i class="font-13 fa fa-star-o"></i><span class="spr-badge-caption">6 reviews</span></a></div>
                             </div>
                             <p class="product-single__price product-single__price-product-template">
                                 <span class="visually-hidden">Regular price</span>
                                 <span class="product-price__price product-price__price-product-template product-price__sale product-price__sale--single">
                                     <span id="ProductPrice-product-template"><span class="money">@(double.Parse(Model.price+"").ToString("#,###", System.Globalization.CultureInfo.GetCultureInfo("vi-VN")) ) VND</span></span>
                                 </span>
-                                <span class="discount-badge">
-                                    <span class="devider">|</span>&nbsp;
-                                    <span>You Save</span>
-                                    <span id="SaveAmount-product-template" class="product-single__save-amount">
-                                    </span>
-                                    <span class="off">(<span>16</span>%)</span>
-                                </span>
+                                
                             </p>
                             <div class="product-single__description rte">
                                 <p>@Html.DisplayFor(model => model.description)</p>
@@ -108,10 +102,7 @@ Layout = "~/Views/Shared/_LayoutCustom.cshtml";
                                         </div>
                                     </div>
                                 </div>
-                                <p class="infolinks">
-                                    <a href="#sizechart" class="sizelink btn"> Size Guide</a>
-                                    <a href="#productInquiry" class="emaillink btn"> Ask About this Product</a>
-                                </p>
+                                
                                 <!-- Product Action -->
                                 <div class="product-action clearfix">
                                     <div class="product-form__item--quantity">
@@ -324,7 +315,6 @@ Layout = "~/Views/Shared/_LayoutCustom.cshtml";
                                         <img class="hover blur-up lazyload" src="/Areas/Admin/Assets/products/@item.img" alt="image" title="product">
                                         <!-- End hover image -->
                                         <!-- product label -->
-                                        <div class="product-labels rectangular"><span class="lbl on-sale">-16%</span> <span class="lbl pr-label1">new</span></div>
                                         <!-- End product label -->
                                     </a>
                                     <!-- end product image -->
@@ -356,18 +346,10 @@ Layout = "~/Views/Shared/_LayoutCustom.cshtml";
                                     <!-- End product name -->
                                     <!-- product price -->
                                     <div class="product-price">
-                                        <span class="old-price">$500.00</span>
-                                        <span class="price">$600.00</span>
+                                        <span class="price">@(double.Parse(item.price+"").ToString("#,###", System.Globalization.CultureInfo.GetCultureInfo("vi-VN")) ) VND</span>
                                     </div>
                                     <!-- End product price -->
 
-                                    <div class="product-review">
-                                        <i class="font-13 fa fa-star"></i>
-                                        <i class="font-13 fa fa-star"></i>
-                                        <i class="font-13 fa fa-star"></i>
-                                        <i class="font-13 fa fa-star-o"></i>
-                                        <i class="font-13 fa fa-star-o"></i>
-                                    </div>
                                     <!-- Variant -->
                                     
                                     <!-- End Variant -->
