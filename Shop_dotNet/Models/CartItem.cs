@@ -9,10 +9,8 @@ namespace Shop_dotNet.Models
     
     public class CartItem
     {
-        [Key]
-        public int RecordId { get; set; }
-        public string CartId { get; set; }
-        public int id { get; set; }
+      
+        public string size { get; set; }
         public int Quantity { get; set; } 
 
         public product product { get; set; }    

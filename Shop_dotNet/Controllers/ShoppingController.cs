@@ -1,13 +1,18 @@
-﻿using Shop_dotNet.Models;
+﻿using System.Text.Json;
+using Shop_dotNet.Models;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Reflection;
 using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
+using System.Threading.Tasks;
 
 namespace Shop_dotNet.Controllers
 {
@@ -27,7 +32,7 @@ namespace Shop_dotNet.Controllers
         // GET: Shopping
 
 
-        public ActionResult Buy(int id)
+        public ActionResult Buy(int id,string size)
         {
             if (id == 0)
             {
@@ -38,21 +43,21 @@ namespace Shop_dotNet.Controllers
             {
 
                 List<CartItem> cart = new List<CartItem>();
-                cart.Add(new CartItem { product = db.products.Find(id), Quantity = 1 });
+                cart.Add(new CartItem { product = db.products.Find(id), Quantity = 1,   size=size });
                 Session["cart"] = cart;
 
             }
             else
             {
                 List<CartItem> cart = (List<CartItem>)Session["cart"];
-                int index = isExist(id);
+                int index = isExistAndSize(id,size);
                 if (index != -1)
                 {
                     cart[index].Quantity++;
                 }
                 else
                 {
-                    cart.Add(new CartItem { product = db.products.Find(id), Quantity = 1 });
+                    cart.Add(new CartItem { product = db.products.Find(id), Quantity = 1,size=size });
                 }
                 Session["cart"] = cart;
             }
@@ -60,13 +65,13 @@ namespace Shop_dotNet.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult UpdateSL(int type, int id)
+        public ActionResult UpdateSL(int type, int id,string size)
         {
             List<CartItem> cart = (List<CartItem>)Session["cart"];
             if (type == 1)
             {
 
-                int index = isExist(id);
+                int index = isExistAndSize(id,size);
                 if (index != -1)
                 {
                     cart[index].Quantity++;
@@ -76,7 +81,7 @@ namespace Shop_dotNet.Controllers
             }
             else
             {
-                int index = isExist(id);
+                int index = isExistAndSize(id, size);
                 if (cart[index].Quantity == 1)
                 {
                     cart.RemoveAt(index);
@@ -97,11 +102,18 @@ namespace Shop_dotNet.Controllers
         {
             List<CartItem> cart = (List<CartItem>)Session["cart"];
             for (int i = 0; i < cart.Count; i++)
-                if (cart[i].product.id.Equals(id))
+                if (cart[i].product.id.Equals(id) )
                     return i;
             return -1;
         }
-
+        private int isExistAndSize(int id, string size)
+        {
+            List<CartItem> cart = (List<CartItem>)Session["cart"];
+            for (int i = 0; i < cart.Count; i++)
+                if (cart[i].product.id.Equals(id) && cart[i].size == size)
+                    return i;
+            return -1;
+        }
         public ActionResult Remove(int id)
         {
             List<CartItem> cart = (List<CartItem>)Session["cart"];
@@ -193,13 +205,17 @@ namespace Shop_dotNet.Controllers
         {
             int orderTotal = 0;
             List<CartItem> dsGiohang = (List < CartItem >) Session["Cart"] ;
+
             var addOrder = new order()
             {
                 name_receive = order.name_receive,
                 phone_receive = order.phone_receive,
                 address_receive = order.address_receive,
                 note = order.Note,
-                
+                customer_id = (int)Session["idUser"],
+                status = 0,
+                total_price = order.price,
+                time = DateTime.Now,
             };
             db.orders.Add(addOrder);
             db.SaveChanges();
@@ -209,7 +225,8 @@ namespace Shop_dotNet.Controllers
                 {
                     product_id = item.product.id,
                     orders_id = addOrder.id,                   
-                    quantity = item.Quantity.ToString()
+                    quantity = item.Quantity.ToString(),
+                    size= item.size
                 };
                 orderTotal += (int)(item.Quantity * item.product.price);
 
@@ -221,10 +238,29 @@ namespace Shop_dotNet.Controllers
             //order.total_price = orderTotal;
             return RedirectToAction("Xacnhandonhang", "Shopping");
         }
+       
+
 
         public ActionResult Xacnhandonhang()
         {
             return View();
+        }
+
+        public  String getSignature(String text, String key)
+        {
+            // change according to your needs, an UTF8Encoding
+            // could be more suitable in certain situations
+            ASCIIEncoding encoding = new ASCIIEncoding();
+
+            Byte[] textBytes = encoding.GetBytes(text);
+            Byte[] keyBytes = encoding.GetBytes(key);
+
+            Byte[] hashBytes;
+
+            using (HMACSHA256 hash = new HMACSHA256(keyBytes))
+                hashBytes = hash.ComputeHash(textBytes);
+
+            return BitConverter.ToString(hashBytes).Replace("-", "").ToLower();
         }
     }
 }
