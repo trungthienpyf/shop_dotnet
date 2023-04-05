@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Shop_dotNet.Models.order>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutCustom.cshtml";
+}
+
+
+
+<div id="page-content">
+    <!--Page Title-->
+    <div class="bredcrumbWrap">
+        <div class="container breadcrumbs">
+            <a href="index.html" title="Back to the home page"></a><span></span>
+        </div>
+    </div>
+    <div class="page section-header text-center">
+        <div class="page-title">
+            <div class="wrapper"><h1 class="page-width">LỊCH SỬ ĐẶT HÀNG</h1></div>
+        </div>
+    </div>
+
+    <table class="table">
+        <tr>
+            <th>
+                Mã ĐH:
+            </th>
+            <th>
+                Mã KH:
+            </th>
+            <th>
+                Ngày Đặt
+            </th>
+
+            <th>
+                Tình Trạng:
+            </th>
+
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.customer_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.time)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.status)
+                </td>
+
+
+                <td>
+                    @Html.ActionLink("Chi Tiết", "Details", new { id = item.id })
+
+                </td>
+            </tr>
+        }
+    </table>
+
+
+
+
+</div>

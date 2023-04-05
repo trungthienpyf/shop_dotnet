@@ -17,5 +17,5 @@ namespace Shop_dotNet.Models
     public string Note { get; set; }
     public int TypePayment { get; set; }
     public int price { get; set; }
-}
+    }
 }
