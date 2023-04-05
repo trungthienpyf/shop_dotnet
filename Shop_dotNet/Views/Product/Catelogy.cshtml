@@ -126,13 +126,12 @@
                                             <!-- End hover image -->
                                             <!-- product label -->
                                             <!-- End product label -->
-                                        </a>
                                         <!-- end product image -->
                                         <!--start product details -->
                                         <div class="product-details hoverDetails text-center mobile">
                                             <!-- product name -->
                                             <div class="product-name">
-                                                <a href="#">@item.name'</a>
+                                                <a href="@Url.Action("ProductAccordion","Product",new {id= item.id})">@item.name'</a>
                                             </div>
                                             <!-- End product name -->
                                             <!-- product price -->
@@ -148,28 +147,11 @@
                                                 <i class="font-13 fa fa-star-o"></i>
                                             </div>
                                             <!-- product button -->
-                                            <div class="button-set">
-                                                <a href="#content_quickview" title="Quick View" class="quick-view-popup quick-view" tabindex="0">
-                                                    <i class="icon anm anm-search-plus-r"></i>
-                                                </a>
-                                                <!-- Start product button -->
-                                                <form action="#" method="post">
-                                                    <button class="btn btn--secondary cartIcon btn-addto-cart" type="button"><i class="icon anm anm-bag-l"></i></button>
-                                                </form>
-                                                <div class="wishlist-btn">
-                                                    <a class="wishlist add-to-wishlist" href="#" title="Add to Wishlist">
-                                                        <i class="icon anm anm-heart-l"></i>
-                                                    </a>
-                                                </div>
-                                                <div class="compare-btn">
-                                                    <a class="compare add-to-compare" href="compare.html" title="Add to Compare">
-                                                        <i class="icon anm anm-random-r"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
+                                            
                                             <!-- end product button -->
                                         </div>
                                         <!-- End product details -->
+                                            </a>
                                     </div>
 
                                 </div>
