@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Shop_dotNet.Models
 {
-    public class OrderViewModel
+    public class OrderViewModel { 
     [Required(ErrorMessage = "Tên người nhận không được để trống")]
     public string name_receive { get; set; }
     [Required(ErrorMessage = "Số điện thoại không được để trống")]
@@ -17,5 +17,5 @@ namespace Shop_dotNet.Models
     public string Note { get; set; }
     public int TypePayment { get; set; }
     public int price { get; set; }
-}
+    }
 }

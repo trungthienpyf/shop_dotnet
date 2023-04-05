@@ -4,5 +4,27 @@
     Layout = "~/Views/Shared/_LayoutCustom.cshtml";
 }
 
-<h2>Dat hang thanh cong</h2>
+@model IEnumerable<Shop_dotNet.Models.order>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutCustom.cshtml";
+}
+
+
+
+<div id="page-content">
+    <!--Page Title-->
+    <div class="bredcrumbWrap">
+        <div class="container breadcrumbs">
+            <a href="index.html" title="Back to the home page"></a><span></span>
+        </div>
+    </div>
+    <div class="page section-header text-center">
+        <div class="page-title">
+            <div class="wrapper"><h1 class="page-width">Đặt hàng thành công</h1></div>
+        </div>
+    </div>
+
+</div>
+
 
