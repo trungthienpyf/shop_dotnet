@@ -31,6 +31,7 @@ namespace Shop_dotNet.Controllers
                     Session["Name"] = data.FirstOrDefault().name;
                     Session["Email"] = data.FirstOrDefault().email;
                     Session["idUser"] = data.FirstOrDefault().id;
+                    Session["User"] = data.FirstOrDefault();
                     return RedirectToAction("Index","Home");
                 }
                 else
@@ -52,12 +53,12 @@ namespace Shop_dotNet.Controllers
 
             if (_user.email == null)
             {
-                ViewBag.emailError = "May nhap vao cho tao";
+                ViewBag.emailError = "Vui lòng nhập Email";
                 return View();
             }
             if (_user.phone == null)
             {
-                ViewBag.phoneError = "May nhap vao cho tao";
+                ViewBag.phoneError = "Vui lòng nhập số điện thoại";
                 return View();
             }
 
@@ -83,13 +84,13 @@ namespace Shop_dotNet.Controllers
                     }
                     else
                     {
-                        ViewBag.emailDuplicate = "Email trung r thang l";
+                        ViewBag.emailDuplicate = "Email đã tồn tại!! Vui lòng nhập lại!";
                         return View();
                     }
                 }
                 else
                 {
-                    ViewBag.phoneDuplicate = "Phone trung r thang l";
+                    ViewBag.phoneDuplicate = "Số điện thoại đã tồn tại!! Vui lòng nhập lại!";
                     return View();
                 }
 
