@@ -21,5 +21,9 @@ namespace Shop_dotNet.Controllers
         {
             return View();
         }
+        public ActionResult Contact()
+        {
+            return View();
+        }
     }
 }
