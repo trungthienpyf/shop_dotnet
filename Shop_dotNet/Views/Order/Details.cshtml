@@ -23,16 +23,13 @@
             <div class="table-responsive">
                 <table class="table table-hover table-striped table-vcenter mb-0 text-nowrap">
                     <thead>
-                        <tr>
-                            <th colspan="5">Đơn hàng</th>
-
-                        </tr>
+                        
                         <tr>
                             <th>Tên sản phẩm</th>
                             <th>Hình ảnh</th>
                             <th>Giá tiền</th>
                             <th>Số lượng</th>
-
+                            <th>Thành tiền</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -43,6 +40,7 @@
                                 <td> <img src="/Areas/Admin/Assets/products/@item.product.img" width="100" /></td>
                                 <td>@item.product.price</td>
                                 <td>@item.Quantity</td>
+                                <td>@(item.Quantity*item.product.price)</td>
                             </tr>
                             tong += (int)(item.Quantity * item.product.price);
                         }
@@ -51,14 +49,13 @@
                 </table>
             </div>
         </div>
-        Trang
         <div style="float:right">
             Tổng tiền @tong VND
         </div>
     </div>
     <p>
 
-        @Html.ActionLink("Back to List", "Index")
+        @Html.ActionLink("Trở về", "Index")
     </p>
 
 </div>

@@ -21,18 +21,23 @@
 
     <table class="table">
         <tr>
-            <th>
-                Mã ĐH:
+            <th class="text-center">
+                Mã đơn hàng
             </th>
-            <th>
-                Mã KH:
+            <th class="text-center">
+                Tên khách hàng
             </th>
-            <th>
+            <th class="text-center">
+                Địa chỉ giao hàng
+            </th>
+            <th class="text-center">
+                Số điện thoại
+            </th>
+            <th class="text-center">
                 Ngày Đặt
             </th>
-
-            <th>
-                Tình Trạng:
+            <th class="text-center">
+                Tình Trạng
             </th>
 
 
@@ -42,19 +47,39 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>
+                <td class="text-center">
                     @Html.DisplayFor(modelItem => item.id)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.customer_id)
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.customer.name)
                 </td>
-                <td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.address_receive)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.phone_receive)
+                </td>
+                <td class="text-center">
                     @Html.DisplayFor(modelItem => item.time)
                 </td>
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.status)
-                </td>
+
+                @if (item.status == 1)
+                {
+
+                    <td class="text-center"><span>Đã phê duyệt</span></td>
+                }
+                else if (item.status == 2)
+                {
+
+                    <td class="text-center"><span>Đã hủy</span></td>
+
+                }
+                else
+                {
+                    <td class="text-center"><span>Đang đặt</span></td>
+                }
+
 
 
                 <td>
