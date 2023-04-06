@@ -3,15 +3,6 @@
     ViewBag.Title = "Xacnhandonhang";
     Layout = "~/Views/Shared/_LayoutCustom.cshtml";
 }
-
-@model IEnumerable<Shop_dotNet.Models.order>
-@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_LayoutCustom.cshtml";
-}
-
-
-
 <div id="page-content">
     <!--Page Title-->
     <div class="bredcrumbWrap">
@@ -21,10 +12,48 @@
     </div>
     <div class="page section-header text-center">
         <div class="page-title">
-            <div class="wrapper"><h1 class="page-width">Đặt hàng thành công</h1></div>
+            <div class="wrapper"><h1 class="page-width"><b>Thông Báo Xác Nhận Đơn Hàng</b></h1></div>
         </div>
     </div>
+    <section id="breadcrumb-wrapper3" class="breadcrumb-w-img">
+        <div class="breadcrumb-overlay"></div>
+        <div class="breadcrumb-content">
+            <div class="wrapper">
+                <div class="inner text-center">
+                    
+                    <div class="breadcrumb-small">
 
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div id="PageContainer" class="is-moved-by-drawer">
+        <main class="main-content" role="main">
+            <section id="page-wrapper">
+                <div class="wrapper">
+                    <div class="inner">
+                        <div class="grid">
+                            <div class="grid__item large--one-third push--large--one-third text-center">
+
+                                <h1>Đơn hàng của quý khách đã được chúng tôi ghi nhận và chúng tôi sẽ liên hệ quý khách trong thời gian sớm nhất</h1>
+                                <hr />
+                                <h4>Mọi thắc mắc xin vui lòng liên hệ vào số Hotline: 0968888111 để được hỗ trợ. Xin chân thành cảm ơn quý khách đã tin tưởng chúng tôi!!</h4> 
+                                <hr />
+                                <p>
+                                    @Html.ActionLink("OK", "Index", "Home")
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
 </div>
+
+
 
 

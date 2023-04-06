@@ -26,6 +26,31 @@ namespace Shop_dotNet.Controllers
             }
 
         }
+
+        public ActionResult UpdateStatus(int? type, int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            else if (type == 1)
+            {
+                var order = db.orders.Find(id);
+                order.status = type;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                var order = db.orders.Find(id);
+                order.status = type;
+                db.SaveChanges();
+
+                return RedirectToAction("Index");
+            }
+
+
+        }
         public ActionResult Details(int? id)
         {
             if (id == null)
