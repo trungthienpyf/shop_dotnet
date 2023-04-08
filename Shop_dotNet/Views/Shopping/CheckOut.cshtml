@@ -6,8 +6,10 @@
     Layout = "~/Views/Shared/_LayoutCustom.cshtml";
     int tong = 0;
     var user = Session["User"] as Shop_dotNet.Models.customer;
-   
+
 }
+<title>Nghiện bóng VCL - Thanh Toán </title>
+
 <!--Body Content-->
 <div id="page-content">
     <!--Page Title-->
@@ -114,7 +116,7 @@
                                 <label>Note</label>
                                 <input type="text" name="Note" class="form-control" autocomplete="off" />
                             </div>
-                            <input type="hidden"  value="@tong" name="price"/>
+                            <input type="hidden" value="@tong" name="price" />
                             <div class="form-group">
                                 <label>Hình thức thanh toán</label>
                                 <select class="form-control" name="PayMent">
@@ -133,7 +135,7 @@
         </div>
 
     </div>
-    
+
 
 </div>
 
