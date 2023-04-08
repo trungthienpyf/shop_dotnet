@@ -99,12 +99,12 @@ Layout = "~/Views/Shared/_LayoutCustom.cshtml";
                                                 <label class="swatchLbl small" for="swatch-1-m" title="41">41</label>
                                             </div>
                                             <div data-value="42" class="swatch-element m available">
-                                                <input class="swatchInput" id="swatch-1-m" type="radio" name="option-1" value="42">
-                                                <label class="swatchLbl small" for="swatch-1-m" title="42">42</label>
+                                                <input class="swatchInput" id="swatch-1-l" type="radio" name="option-1" value="42">
+                                                <label class="swatchLbl small" for="swatch-1-l" title="42">42</label>
                                             </div>
                                             <div data-value="43" class="swatch-element m available">
-                                                <input class="swatchInput" id="swatch-1-m" type="radio" name="option-1" value="43">
-                                                <label class="swatchLbl small" for="swatch-1-m" title="43">43</label>
+                                                <input class="swatchInput" id="swatch-1-k" type="radio" name="option-1" value="43">
+                                                <label class="swatchLbl small" for="swatch-1-k" title="43">43</label>
                                             </div>
                                         </div>
 
@@ -398,19 +398,17 @@ Layout = "~/Views/Shared/_LayoutCustom.cshtml";
     </div>
     <!--End Body Content-->
 </div>
-<script defer  type="text/javascript">
-    $.each($(".product-form__item div input"), function (index, value) {
-        if (index.checked == true) {
-            console.log(1)
-        }
-        if (value.checked == true) {
-            console.log(2)
-        }
-    })
+<script defer type="text/javascript">
+
     $(".swatchInput").click(function () {
-        let href = $("#appendSize").attr("href").slice(0, -1)
-      let getSize=$(this)[0].defaultValue
-        $("#appendSize").attr("href", href + getSize).slice(0, -1)
-        console.log(href + getSize)
+
+        const [string1, string2, string3] = $("#appendSize").attr("href").split('=');
+
+
+
+        let getSize = $(this)[0].defaultValue
+        $("#appendSize").attr("href", string1 + "=" + string2 + "=" + getSize)
+
+        console.log(string1 + "=" + string2 + "=" + getSize)
     })
 </script>
