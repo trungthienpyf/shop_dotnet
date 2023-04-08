@@ -1,0 +1,96 @@
+﻿@model IEnumerable<Shop_dotNet.Models.order>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutCustom.cshtml";
+}
+
+
+
+<div id="page-content">
+    <!--Page Title-->
+    <div class="bredcrumbWrap">
+        <div class="container breadcrumbs">
+            <a href="index.html" title="Back to the home page"></a><span></span>
+        </div>
+    </div>
+    <div class="page section-header text-center">
+        <div class="page-title">
+            <div class="wrapper"><h1 class="page-width">LỊCH SỬ ĐẶT HÀNG</h1></div>
+        </div>
+    </div>
+
+    <table class="table">
+        <tr>
+            <th class="text-center">
+                Mã đơn hàng
+            </th>
+            <th class="text-center">
+                Tên khách hàng
+            </th>
+            <th class="text-center">
+                Địa chỉ giao hàng
+            </th>
+            <th class="text-center">
+                Số điện thoại
+            </th>
+            <th class="text-center">
+                Ngày Đặt
+            </th>
+            <th class="text-center">
+                Tình Trạng
+            </th>
+
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.id)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.customer.name)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.address_receive)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.phone_receive)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.time)
+                </td>
+
+
+                @if (item.status == 1)
+                {
+
+                    <td class="text-center"><span>Đã phê duyệt</span></td>
+                }
+                else if (item.status == 2)
+                {
+
+                    <td class="text-center"><span>Đã hủy</span></td>
+
+                }
+                else
+                {
+                    <td class="text-center"><span>Đang đặt</span></td>
+                }
+
+
+
+                <td>
+                    @Html.ActionLink("Chi Tiết", "Details", new { id = item.id })
+
+                </td>
+            </tr>
+        }
+    </table>
+
+
+
+
+</div>

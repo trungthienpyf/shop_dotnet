@@ -152,53 +152,7 @@ namespace Shop_dotNet.Controllers
         {
             return PartialView();
         }
-        /*[HttpPost]
-        public ActionResult DatHang(FormCollection collection)
-        {
-            //Them Don hang
-            order ddh = new order();
-            //customer kh = (customer)Session["Taikhoan"];
-            var xuat = db.customers.Find();
-            List<CartItem> gh = Laygiohang();
-            ddh.id = xuat.id;
-            if (collection["Ngaygiao"].Equals(""))
-            {
-                DateTime aDateTime = DateTime.Now;
-                DateTime newTime = aDateTime.AddDays(7);
-            }
-            else
-            {
-                var ngaygiao = String.Format("{0:dd/MM/yyyy}", collection["Ngaygiao"]);
-            }
-            ddh.status = 0;
-            db.orders.Add(ddh);
-            db.SaveChanges();
-            foreach (var item in gh)
-            {
-                //product giay = db.products.Single(n => n.id == item.iMAGIAY);
-                //if ( >= item.iSOLUONG)
-                //{
-                //CTDONDATHANG ctdh = new CTDONDATHANG();
-                //ctdh.MADH = ddh.MADH;
-                //ctdh.MAGIAY = item.iMAGIAY;
-                //ctdh.SOLUONG = item.iSOLUONG;
-                //ctdh.DONGIA = (int)item.dDONGIA;
-                //data.CTDONDATHANGs.InsertOnSubmit(ctdh);
-                //giay.SOLUONG = giay.SOLUONG - item.iSOLUONG;
-                db.SaveChanges();
-                Session["Giohang"] = null;
-               /// }
-               // else
-               // {
-               //     return RedirectToAction("ThongBao", "Giohang");
-               // }
-
-            }
-            return RedirectToAction("Xacnhandonhang", "Giohang");
-
-        }*/
-        
-        
+      
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult CheckOut(OrderViewModel order)
@@ -238,8 +192,8 @@ namespace Shop_dotNet.Controllers
             //order.total_price = orderTotal;
             return RedirectToAction("Xacnhandonhang", "Shopping");
         }
-       
 
+       
 
         public ActionResult Xacnhandonhang()
         {
@@ -248,8 +202,7 @@ namespace Shop_dotNet.Controllers
 
         public  String getSignature(String text, String key)
         {
-            // change according to your needs, an UTF8Encoding
-            // could be more suitable in certain situations
+          
             ASCIIEncoding encoding = new ASCIIEncoding();
 
             Byte[] textBytes = encoding.GetBytes(text);

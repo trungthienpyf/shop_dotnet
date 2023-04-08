@@ -19,7 +19,7 @@
         </div>
         <div class="page section-header text-center">
             <div class="page-title">
-                <div class="wrapper"><h1 class="page-width">Thanh toán</h1></div>
+                <div class="wrapper"><h1 class="page-width"><b>Thanh toán</b></h1></div>
             </div>
         </div>
         <!--End Page Title-->
@@ -32,7 +32,7 @@
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                     <div class="your-order-payment">
                         <div class="your-order">
-                            <h2 class="order-title mb-4">Giỏ hàng của bạn</h2>
+                            <h2 class="order-title mb-4"><b>Giỏ hàng của bạn</b></h2>
 
                             <div class="table-responsive-sm order-table">
                                 <table class="bg-white table table-bordered table-hover text-center">
@@ -75,11 +75,11 @@
                                     </tbody>
                                     <tfoot class="font-weight-600">
                                         <tr>
-                                            <td colspan="3" class="text-right">Shipping </td>
+                                            <td colspan="4" class="text-right">Shipping </td>
                                             <td>Free Ship</td>
                                         </tr>
                                         <tr>
-                                            <td colspan="3" class="text-right">Total</td>
+                                            <td colspan="4" class="text-right">Total</td>
                                             <td>@(double.Parse(@tong + "").ToString("#,###", System.Globalization.CultureInfo.GetCultureInfo("vi-VN")) ) VND</td>
                                         </tr>
                                     </tfoot>
@@ -93,7 +93,7 @@
                         @using (Html.BeginForm())
                         {
                             @Html.AntiForgeryToken()
-                            <h2 class="text-center">Thông tin khách hàng</h2>
+                            <h2 class="text-center"><b>Thông tin khách hàng</b></h2>
                             <div class="form-group">
                                 <label>Họ tên khách hàng</label>
                                 <input type="text" name="name_receive" required class="form-control" autocomplete="off" value="@user.name" />
