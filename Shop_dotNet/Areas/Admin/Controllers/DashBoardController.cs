@@ -32,7 +32,7 @@ namespace Shop_dotNet.Areas.Admin.Controllers
         // GET: Admin/DashBoard
         public ActionResult Index()
         {
-            ViewBag.sum = db.orders.Sum(c => c.total_price);
+            ViewBag.sum = db.orders.Where(s=>s.status==1).Sum(c => c.total_price);
             ViewBag.orders_new = db.orders.Where(c => c.status==0).Count();
             ViewBag.cus = db.customers.Where(c => c.role!=1).Count();
             ViewBag.orders_reject = db.orders.Where(c => c.status == 2).Count();

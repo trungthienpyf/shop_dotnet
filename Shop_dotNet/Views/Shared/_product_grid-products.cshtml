@@ -52,8 +52,7 @@
                 <!-- End product name -->
                 <!-- product price -->
                 <div class="product-price">
-                    <span class="old-price">$500.00</span>
-                    <span class="price">$600.00</span>
+                    <span class="price">@(double.Parse(item.price+"").ToString("#,###", System.Globalization.CultureInfo.GetCultureInfo("vi-VN")) ) VND</span>
                 </div>
                 <!-- End product price -->
 
